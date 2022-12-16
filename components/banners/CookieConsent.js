@@ -1,58 +1,120 @@
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
-import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
+import { setCookie, hasCookie } from "cookies-next";
 
-const USER_CONSENT_COOKIE_KEY = "cookie_consent_is_true";
-const USER_CONSENT_COOKIE_EXPIRE_DATE = 365;
-
-export function CookieConsent(props) {
-  const [cookieConsentIsTrue, setCookieConsentIsTrue] = useState(true);
-
+export default function CookieConsent() {
+  const [consent, setConsent] = useState(true);
   useEffect(() => {
-    const consentIsTrue = Cookies.get(USER_CONSENT_COOKIE_KEY) === "true";
-    setCookieConsentIsTrue(consentIsTrue);
+    setConsent(hasCookie("localConsent"));
   }, []);
 
-  const onClick = (e) => {
-    e.preventDefault();
-
-    if (!cookieConsentIsTrue) {
-      Cookies.set(USER_CONSENT_COOKIE_KEY, "true", {
-        expires: USER_CONSENT_COOKIE_EXPIRE_DATE,
-      });
-      setCookieConsentIsTrue(true);
-    }
+  const acceptCookie = () => {
+    setConsent(true);
+    setCookie("localConsent", "true", { maxAge: 60 * 60 * 24 * 365 });
+    gtag("consent", "update", {
+      ad_storage: "granted",
+      analytics_storage: "granted",
+    });
+    console.log("accepting cookies");
   };
-  if (cookieConsentIsTrue) {
+  const closeP = () => {
+    setConsent(true);
+    console.log("closing");
+  };
+  const denyCookie = () => {
+    setConsent(true);
+    setCookie("localConsent", "false", { maxAge: 60 * 60 * 24 * 365 });
+    console.log("denying cookie");
+  };
+  if (consent === true) {
     return null;
   }
   return (
-    <section className="fixed bottom-0 left-0 w-full py-2 md:py-4">
-      <div className="flex flex-col items-start px-5 py-3 space-y-2 bg-gray-200 md:flex-row md:space-y-0 md:items-stretch md:space-x-2">
-        <div className="flex items-center flex-grow text-gray-900">
-          <p className="text-sm font-medium">
-            This site uses services that use cookies to deliver better
-            experience and analyze traffic. You can learn more about the
-            services we use at our{" "}
-            <Link
-              className="text-sm underline hover:text-lightAccent"
-              href="/privacy-policy"
-            >
-              Privacy Policy
-            </Link>
-            .
-          </p>
-        </div>
-        <div className="flex items-center">
-          <button
-            className="p-3 text-sm font-bold text-white uppercase bg-gray-700 whitespace-nowrap"
-            onClick={onClick}
-          >
-            Got it
-          </button>
-        </div>
+    <div
+      className={`
+        fixed bottom-6 0w-[calc(100%_-_48px)]
+        right-6 pt-5 pb-6 px-6
+        rounded-lg
+        md:max-w-xs
+        bg-white ${consent ? "hidden" : ""}
+        shadow-xl
+        flex flex-col items-center
+        `}
+    >
+      {/* <p>This Site use cookie, please accept them if you want.</p> */}
+      <p className="0text-sm">
+        We use cookies to analyze site performance and deliver personalized
+        content. By clicking “Agree”, you consent to our Cookie Policy.
+      </p>
+
+      <div className="w-full grid grid-cols-2 gap-2 my-4 mb-2">
+        <button
+          onClick={(e) => denyCookie()}
+          className="
+          block px-4 py-3
+          whitespace-nowrap
+          text-gray-900
+          font-bold
+          tracking-wide
+          rounded-lg
+          bg-gray-300
+          hover:bg-gray-400
+          focus:outline-none
+          focus:ring-4
+          focus:ring-blue-300
+          "
+        >
+          Deny
+        </button>
+        <button
+          onClick={() => {
+            acceptCookie();
+          }}
+          className="
+          block px-4 py-3
+          whitespace-nowrap
+          text-white
+          font-bold
+          tracking-wide
+          rounded-lg
+          bg-gray-900
+          hover:bg-gray-800
+          focus:outline-none
+          focus:ring-4
+          focus:ring-blue-300
+          "
+        >
+          Agree
+        </button>
       </div>
-    </section>
+
+      <div className="w-full grid grid-cols-1">
+        <button
+          onClick={(e) => {
+            closeP();
+          }}
+          className="
+          text-gray-900
+          font-bold
+          tracking-wide
+          rounded-lg
+          px-4 py-3
+          border-2
+          border-gray-300
+          hover:bg-gray-800
+          0dark:bg-gray-50
+          0dark:hover:bg-gray-100
+          focus:outline-none
+          focus:ring-4
+          focus:ring-blue-300
+          0dark:focus:ring-blue-500
+          "
+        >
+          Close
+        </button>
+      </div>
+    </div>
   );
 }
+
+// credit https://javascript.plainenglish.io/manage-cookie-consent-in-next-js-with-google-tag-manager-4d58818266ea

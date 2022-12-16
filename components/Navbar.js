@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import { Section } from "../components/Section";
 
 export function Navbar(props) {
@@ -6,13 +9,18 @@ export function Navbar(props) {
   return (
     <header>
       <Section>
-        <span
+        <Link
+          href="/"
           className="
             font-bold
+            flex
+            items-center
           "
         >
-          🍊 marmelade.ai
-        </span>
+          <Image width={32} height={32} src="/marmelade-logo.svg"></Image>
+          {/* 🍊 marmelade.ai */}
+          &nbsp; marmelade.ai
+        </Link>
       </Section>
     </header>
   );

@@ -2,7 +2,7 @@ import { Section } from "../components/Section";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 
-import { CookieConsent } from "../components/banners/CookieConsent";
+import CookieConsent from "../components/banners/CookieConsent";
 
 export default function Page(props) {
   const { children, className } = props;
@@ -11,9 +11,10 @@ export default function Page(props) {
     // <div className="grid grid-rows-[auto_1fr_auto]">
     // <div className="h-screen grid grid-rows-[auto_minmax(320px,_1fr)_auto]">
     // <div className={`h-screen grid grid-rows-[auto_min-content_auto] ${className}`}>
+    // <div className="h-screen grid grid-rows-[auto_minmax(320px,_1fr)_auto]">
     <div className={`min-h-screen grid grid-rows-[auto_1fr_auto] ${className}`}>
       <Navbar />
-      <main>
+      <main className="flex min-w-full items-center mx-auto">
         <Section>{children}</Section>
       </main>
       <Footer />

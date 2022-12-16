@@ -32,25 +32,25 @@ export default function Home() {
 
       <Page>
         <div className="flex items-center">
-          <div className="lr:pr-8 basis-1/2">
+          <div className="lr:pr-8 basis-2/5">
             <h1
               className="
           text-3xl
           font-bold
           mb-2
-          lg:w-3/5
+          0lg:w-3/5
           "
             >
               Your content strategy on autopilot with AI
             </h1>
 
-            <p className="mb-6 text-lg lg:w-3/5">
+            <p className="mb-8 text-lg lg:w-3/4">
               Research and create relevant content for your audience 10x faster.
             </p>
 
             <Button href="#">Get early access</Button>
           </div>
-          <div className="lg:pl-8 basis-1/2">
+          <div className="lg:pl-8 basis-3/5">
             <Image width={592} height={592} src="/hero-transparent.png"></Image>
           </div>
         </div>
