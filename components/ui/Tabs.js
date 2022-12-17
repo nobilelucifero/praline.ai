@@ -62,7 +62,7 @@ export const Tabs = ({ children, preSelectedTabIndex }) => {
       >
         {children.map((item, index) => (
           <TabTitle
-            key={item.props.title}
+            key={`tab-titles-${index}`}
             title={item.props.title}
             index={index}
             isActive={index === selectedTabIndex}
