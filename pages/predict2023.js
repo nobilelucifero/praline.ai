@@ -1,105 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import { formContent } from "../data/schema";
 
 import Head from "next/head";
 import Image from "next/image";
 
 import Page from "../layouts/page";
+import Modal from "../components/ui/Modal";
+import Prompt from "../components/predict2023/Prompt";
 
 import { Button } from "../components/Button";
+import Teaser from "../components/ui/Teaser";
 
-const formContent = {
-  v: 1,
-  prompts: [
-    {
-      name: "industry",
-      text: "Choose your industry",
-      prompt_type: "text",
-      answers: [
-        "Design",
-        "Mobility",
-        "Sustainability",
-        "Fashion",
-        "Web3",
-        "Sales",
-      ],
-      answers_type: "tags",
-    },
-    {
-      name: "tone",
-      text: "Tone of voice",
-      prompt_type: "text",
-      answers: [
-        "Corporate, baby! 🤙",
-        "Indutry expert",
-        "Approachable",
-        "Friendly",
-        "Funny",
-        "Ludicrous 🔥",
-      ],
-      answers_type: "single_choice",
-    },
-    {
-      name: "emoji",
-      text: "Emoji level",
-      prompt_type: "text",
-      answers: ["None, thanks", "Some 👌", "Many 💃", "Make it rain 🌧"],
-      answers_type: "single_choice",
-    },
-  ],
-};
-
-const Prompt = (props) => {
-  const { text, answers, name } = props;
-
-  const fieldsetId = `group-${name}`;
-
-  return (
-    <section
-      className="
-      mb-12
-      last:mb-0
-    "
-    >
-      <h3
-        className="
-        text-xl
-        font-bold
-      "
-      >
-        {text}
-      </h3>
-      <fieldset id={name}>
-        {answers.map((answer, index) => {
-          const id = `${name}-${index}`;
-          return (
-            <div className="flex items-center mb-0" key={index}>
-              <input
-                className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
-                type="radio"
-                value={answer}
-                // value={id}
-                name={name}
-                id={id}
-              />
-              <label
-                className="
-                  block
-                  ml-2
-                "
-                htmlFor={id}
-              >
-                {answer}
-              </label>
-            </div>
-          );
-        })}
-      </fieldset>
-    </section>
-  );
+const res200 = {
+  text: "1. Continued growth and maturation of the VC sector, with increasing amounts of capital flowing into startups and emerging industries.\n2. A focus on diversity and inclusion, with more VC firms looking to invest in underrepresented founders and ideas.\n3. The rise of environmental, social, and governance (ESG) investing, with more VC firms incorporating sustainability and impact into their investment strategies.\n4. An increasing emphasis on innovation and technology, with artificial intelligence, robotics, and other cutting-edge technologies becoming increasingly important to VC investors.\n5. Continued consolidation and evolution of the VC landscape, with larger, more established firms growing in size and influence, and newer, more specialized firms emerging to focus on specific industries and geographies.",
+  info: "success",
 };
 
 export default function Predict2023() {
   const [content] = useState(formContent);
+  const [resData, setResData] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [resultHidden, setResultHidden] = useState(true);
+
+  useEffect(() => {
+    // temp
+    setResData(res200);
+  }, []);
+
   // const [formData, setFormData] = useState();
 
   const handleSubmit = async (event) => {
@@ -158,9 +86,26 @@ export default function Predict2023() {
             0dark:focus:ring-blue-500
             "
             type="submit"
+            onClick={() => setOpen(true)}
           >
             Submit
           </button>
+          <Modal
+            title="Your results are in 🎉"
+            isOpen={open}
+            onClose={() => setOpen(false)}
+          >
+            <Teaser hidden>
+              {res200.text.split("\n").map(function (item, index) {
+                return (
+                  <span className="block mb-1 last:mb-0" key={index}>
+                    {item}
+                    <br />
+                  </span>
+                );
+              })}
+            </Teaser>
+          </Modal>
         </form>
       </Page>
     </div>

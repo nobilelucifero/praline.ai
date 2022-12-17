@@ -4,7 +4,7 @@ export function Section(props) {
   const { children } = props;
 
   return (
-    <div className="py-12">
+    <div className="w-full py-12">
       <Wrapper>{children}</Wrapper>
     </div>
   );

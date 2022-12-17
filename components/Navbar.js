@@ -17,7 +17,12 @@ export function Navbar(props) {
             items-center
           "
         >
-          <Image width={32} height={32} src="/marmelade-logo.svg"></Image>
+          <Image
+            width={32}
+            height={32}
+            src="/marmelade-logo.svg"
+            alt=" "
+          ></Image>
           {/* 🍊 marmelade.ai */}
           &nbsp; marmelade.ai
         </Link>
