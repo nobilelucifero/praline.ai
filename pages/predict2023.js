@@ -7,10 +7,8 @@ import Image from "next/image";
 
 import Page from "../layouts/page";
 import Modal from "../components/ui/Modal";
-import Prompt from "../components/predict2023/Prompt";
-
-import { Button } from "../components/Button";
 import Teaser from "../components/ui/Teaser";
+import Prompt from "../components/predict2023/Prompt";
 
 const res200 = {
   text: "1. Continued growth and maturation of the VC sector, with increasing amounts of capital flowing into startups and emerging industries.\n2. A focus on diversity and inclusion, with more VC firms looking to invest in underrepresented founders and ideas.\n3. The rise of environmental, social, and governance (ESG) investing, with more VC firms incorporating sustainability and impact into their investment strategies.\n4. An increasing emphasis on innovation and technology, with artificial intelligence, robotics, and other cutting-edge technologies becoming increasingly important to VC investors.\n5. Continued consolidation and evolution of the VC landscape, with larger, more established firms growing in size and influence, and newer, more specialized firms emerging to focus on specific industries and geographies.",
@@ -19,6 +17,7 @@ const res200 = {
 
 export default function Predict2023() {
   const [content] = useState(formContent);
+  const [formData, setFormData] = useState({});
   const [resData, setResData] = useState(null);
   const [open, setOpen] = useState(false);
   const [resultHidden, setResultHidden] = useState(true);
@@ -28,20 +27,48 @@ export default function Predict2023() {
     setResData(res200);
   }, []);
 
-  // const [formData, setFormData] = useState();
-
+  const handleChange = async (event) => {
+    setFormData((formData) => ({
+      ...formData,
+      [event.target.name]: event.target.value,
+    }));
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const data = {
-      industry: event.target.elements.industry.value,
-      tone: event.target.elements.tone.value,
-      emoji: event.target.elements.emoji.value,
-    };
+    // console.info(event.target.elements.fieldset);
+    // const elements = event.target.elements;
+    // console.log(">>>", event.target.elements.value);
+
+    // Object.keys(elements).map((i) => {
+    //   if (elements[i]) {
+    //     // console.info("formData", formData);
+
+    //     setFormData((formData) => ({
+    //       ...formData,
+    //       [elements[i].name]: elements[i].value,
+    //     }));
+    //   }
+    // });
+
+    // setFormData({
+    //   industry: event.target.elements.industry.value,
+    //   style: event.target.elements.style.value,
+    //   personality: event.target.elements.personality.value,
+    //   verbosity: event.target.elements.verbosity.value,
+    //   emoji: event.target.elements.emoji.value,
+    // });
+    // const data = {};
+    // for (var x = 0; x < 100; x++) {
+    //   data[x] = { name: etc };
+    // }
 
     // const JSONdata = JSON.stringify(data);
 
-    console.log("POST", data);
+    if (!formData) {
+      console.error("formData is empty!");
+    }
+    console.log("POST", formData);
     // console.log("POST", JSONdata);
   };
 
@@ -54,11 +81,12 @@ export default function Predict2023() {
       </Head>
 
       <Page className="bg-sky-300">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onChange={handleChange}>
           {content &&
             content.prompts.map((prompt, index) => {
               const key = `${prompt.text.substring(0, 3)}${index}`;
               // <pre>{JSON.stringify(prompt, null, 4)}</pre>
+              // console.log("$$$", prompt.name, prompt.answers);
               return (
                 <Prompt
                   text={prompt.text}
