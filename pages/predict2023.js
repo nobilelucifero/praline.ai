@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import Page from "../layouts/page";
 import Modal from "../components/ui/Modal";
+import ModalToolbar from "../components/ui/ModalToolbar";
 import Teaser from "../components/ui/Teaser";
 import Prompt from "../components/predict2023/Prompt";
 
@@ -81,10 +82,17 @@ export default function Predict2023() {
       </Head>
 
       <Page className="bg-sky-300">
+        <div className="mb-24 animate-[fadeIn_0.5s_ease-out_forwards]">
+          <h1 className="mb-2 text-5xl font-bold">Predict 2023 with AI</h1>
+          <p className="text-xl">
+            Input a few prompts and impress your audience. 🔥
+          </p>
+        </div>
         <form onSubmit={handleSubmit} onChange={handleChange}>
           {content &&
             content.prompts.map((prompt, index) => {
               const key = `${prompt.text.substring(0, 3)}${index}`;
+              console.log("delay:", `${index * 100 + "s"}`);
               // <pre>{JSON.stringify(prompt, null, 4)}</pre>
               // console.log("$$$", prompt.name, prompt.answers);
               return (
@@ -93,6 +101,12 @@ export default function Predict2023() {
                   answers={prompt.answers}
                   name={prompt.name}
                   key={prompt.name}
+                  className={`
+                    animate-[fadeIn_0.5s_ease-out_forwards]
+                  `}
+                  style={{
+                    animationDelay: `${((index + 2) * 2.5) / 10 + "s"}`,
+                  }}
                 />
               );
             })}
@@ -119,19 +133,20 @@ export default function Predict2023() {
             Submit
           </button>
           <Modal
-            title="Your results are in 🎉"
+            title="Your trend predictions 2023 are ready!"
             isOpen={open}
             onClose={() => setOpen(false)}
           >
-            <Teaser hidden>
+            <Teaser hidden={true}>
               {res200.text.split("\n").map(function (item, index) {
                 return (
-                  <span className="block mb-1 last:mb-0" key={index}>
+                  <span className="block mb-2 last:mb-0" key={index}>
                     {item}
                     <br />
                   </span>
                 );
               })}
+              <ModalToolbar />
             </Teaser>
           </Modal>
         </form>

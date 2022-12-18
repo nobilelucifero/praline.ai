@@ -20,7 +20,7 @@ export function TwitterLabel() {
   );
 }
 
-export function TeaserContent() {
+export function TeaserContent({ childToParent }) {
   return (
     <div
       className="
@@ -44,7 +44,7 @@ export function TeaserContent() {
             text-xl
         "
         >
-          Are you interested in seeing more?
+          Time to post your prediction
         </h3>
         <p>Sign up for early updates on marmelade.ai.</p>
       </div>
@@ -133,6 +133,7 @@ export function TeaserContent() {
                 px-4
                 rounded-lg
             "
+              onClick={() => childToParent()}
             >
               Send
             </button>
@@ -147,6 +148,8 @@ export function TeaserContent() {
             text-sm
             pt-2
           "
+        // onClick={setIsContentHidden(false)}
+        onClick={() => childToParent()}
       >
         Skip (this time)
       </button>
@@ -155,25 +158,31 @@ export function TeaserContent() {
 }
 
 export default function Teaser({ children, hidden }) {
-  //   const [isHidden, setIsHidden] = useState(hidden);
+  const [isContentHidden, setIsContentHidden] = useState(hidden);
 
-  if (!hidden) return <>{children}</>;
+  console.log(isContentHidden);
+
+  const childToParent = () => {
+    setIsContentHidden(false);
+  };
+
+  if (!isContentHidden) return <>{children}</>;
 
   return (
     <div>
       <div
         className={
-          hidden
+          isContentHidden
             ? `
               relative
-              h-44
+              h-40
               overflow-hidden
               `
             : ``
         }
       >
         {children}
-        {hidden ? (
+        {isContentHidden ? (
           <div
             className="
                 absolute
@@ -187,7 +196,7 @@ export default function Teaser({ children, hidden }) {
           ""
         )}
       </div>
-      {hidden ? <TeaserContent /> : ""}
+      {isContentHidden ? <TeaserContent childToParent={childToParent} /> : ""}
     </div>
   );
 }

@@ -6,6 +6,7 @@ export function Button(props) {
   return (
     <Link
       className="
+      inline-block
       whitespace-nowrap
     text-white
     font-bold

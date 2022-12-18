@@ -41,11 +41,12 @@ function CloseButton(props) {
         absolute
         top-5
         right-6
-        w-8
-        h-8
-        p-1
+        w-10
+        h-10
+        p-2
         rounded-full
         bg-gray-900
+        hover:bg-gray-700
         0overflow-hidden
         text-center
         "
@@ -92,6 +93,8 @@ export default function Modal({ isOpen, onClose, children, title }) {
         py-6
         px-6
         rounded-xl
+        opacity-0
+        animate-[fadeIn_0.25s_ease-out_forwards]
       "
         onClick={(e) => e.stopPropagation()}
       >

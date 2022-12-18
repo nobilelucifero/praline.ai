@@ -47,8 +47,8 @@ export default function Home() {
       .catch((err) => console.error(err));
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  // if (isLoading) return <p>Loading...</p>;
+  // if (!data) return <p>No profile data</p>;
 
   return (
     <div className="bg-sky-300">
