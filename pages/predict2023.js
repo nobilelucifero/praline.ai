@@ -85,13 +85,29 @@ export default function Predict2023() {
         <div className="mb-24 animate-[fadeIn_0.5s_ease-out_forwards]">
           <h1 className="mb-2 text-5xl font-bold">Predict 2023 with AI</h1>
           <p className="text-xl">
-            Input a few prompts and impress your audience. 🔥
+            Choose from a few prompts and impress your audience with the best
+            predictions for the upcoming year. 🔥
+            <small
+              className="
+              block
+              text-sky-900
+            "
+            >
+              Powered by{" "}
+              <a
+                className="border-b-2 border-sky-900 border-dotted hover:border-solid"
+                href="https://openai.com"
+              >
+                ChatGPT
+              </a>
+              .
+            </small>
           </p>
         </div>
         <form onSubmit={handleSubmit} onChange={handleChange}>
           {content &&
             content.prompts.map((prompt, index) => {
-              const key = `${prompt.text.substring(0, 3)}${index}`;
+              // const key = `${prompt.text.substring(0, 3)}${index}`;
               console.log("delay:", `${index * 100 + "s"}`);
               // <pre>{JSON.stringify(prompt, null, 4)}</pre>
               // console.log("$$$", prompt.name, prompt.answers);
