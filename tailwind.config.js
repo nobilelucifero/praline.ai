@@ -7,9 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        "slide-move-in": "slideMoveIn 0.25s ease-out forwards",
+        "slide-move-out": "slideMoveOut 0.25s ease-out forwards",
+      },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0", transform: "translateY(3rem)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideMoveIn: {
+          "0%": { opacity: "0", transform: "translateY(3rem)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideMoveOut: {
+          "0%": { opacity: "0", transform: "translateY(-3rem)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },

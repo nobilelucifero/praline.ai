@@ -44,18 +44,19 @@ export function Slides({ data }) {
               key={`${name}-${index}`}
               className={
                 slideIndex === index
-                  ? "flex justify-between items-center"
-                  : "hidden"
+                  ? "w-[800px] h-[400px] bg-gray-200 flex justify-between items-center"
+                  : "w-[800px] h-[400px] hidden animate-none"
               }
             >
-              Slide no. {text}{" "}
+              <div className="animate-slide-move-in">Slide no. {text}</div>
               {/* {slideIndex === index ? "slide active-anim" : "slide"} */}
             </div>
           );
         })}
       <div>
-        <BtnSlider moveSlide={nextSlide} direction={"next"} />
         <BtnSlider moveSlide={prevSlide} direction={"prev"} />
+        <span className="mx-2"></span>
+        <BtnSlider moveSlide={nextSlide} direction={"next"} />
       </div>
     </div>
   );
@@ -64,7 +65,7 @@ export function Slides({ data }) {
 export function BtnSlider({ direction, moveSlide }) {
   return (
     <button className="btn-slide" onClick={moveSlide}>
-      {direction === "next" ? "Next &rarr;" : "&larr; Prev"}
+      {direction === "next" ? "Next ➡️" : "⬅️ Prev"}
     </button>
   );
 }
