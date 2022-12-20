@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { formContent } from "../data/schema";
+import { initialData, formContent as content } from "../data/schema";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -17,60 +17,64 @@ const res200 = {
 };
 
 export default function Predict2023() {
-  const [content] = useState(formContent);
-  const [formData, setFormData] = useState({});
-  const [resData, setResData] = useState(null);
+  const [data, setData] = useState(initialData);
+  const [currentData, setCurrentData] = useState();
+  const [response, setResponse] = useState("");
+  // const [content] = useState(content);
+  // const [formData, setFormData] = useState({});
+  // const [resData, setResData] = useState(null);
   const [open, setOpen] = useState(false);
-  const [resultHidden, setResultHidden] = useState(true);
+  // const [resultHidden, setResultHidden] = useState(true);
 
-  useEffect(() => {
-    // temp
-    setResData(res200);
-  }, []);
+  // useEffect(() => {
+  //   // temp
+  //   setResData(res200);
+  // }, []);
 
-  const handleChange = async (event) => {
-    setFormData((formData) => ({
-      ...formData,
-      [event.target.name]: event.target.value,
-    }));
+  // const handleChange = async (event) => {
+  //   setFormData((formData) => ({
+  //     ...formData,
+  //     [event.target.name]: event.target.value,
+  //   }));
+  // };
+
+  const submitValues = async (value) => {
+    const keys = Object.values(value).join("-");
+
+    const res = await fetch(`/api/lookup`, {
+      method: "POST",
+      body: JSON.stringify(value),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const APIdata = await res.json();
+    const obj = JSON.parse(APIdata);
+
+    setResponse(obj[keys]);
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // console.info(event.target.elements.fieldset);
-    // const elements = event.target.elements;
-    // console.log(">>>", event.target.elements.value);
+    setData({
+      industry: event.target.elements.industry.value,
+      style: event.target.elements.style.value,
+      personality: event.target.elements.personality.value,
+      verbosity: event.target.elements.verbosity.value,
+      emoji: event.target.elements.emoji.value,
+    });
 
-    // Object.keys(elements).map((i) => {
-    //   if (elements[i]) {
-    //     // console.info("formData", formData);
+    console.log("data", data);
 
-    //     setFormData((formData) => ({
-    //       ...formData,
-    //       [elements[i].name]: elements[i].value,
-    //     }));
-    //   }
-    // });
+    const keys = Object.values(data).join("-");
+    setCurrentData(keys);
+    // submitValues(currentData);
+    submitValues(data);
 
-    // setFormData({
-    //   industry: event.target.elements.industry.value,
-    //   style: event.target.elements.style.value,
-    //   personality: event.target.elements.personality.value,
-    //   verbosity: event.target.elements.verbosity.value,
-    //   emoji: event.target.elements.emoji.value,
-    // });
-    // const data = {};
-    // for (var x = 0; x < 100; x++) {
-    //   data[x] = { name: etc };
-    // }
-
-    // const JSONdata = JSON.stringify(data);
-
-    if (!formData) {
-      console.error("formData is empty!");
-    }
-    console.log("POST", formData);
-    // console.log("POST", JSONdata);
+    // console.table(data, Object.values(data));
+    // console.log();
   };
 
   return (
@@ -104,11 +108,15 @@ export default function Predict2023() {
             </small>
           </p>
         </div>
-        <form onSubmit={handleSubmit} onChange={handleChange}>
+        <form
+          onSubmit={handleSubmit}
+          // onChange={handleChange}
+        >
           {content &&
-            content.prompts.map((prompt, index) => {
+            content.prompts.map((prompt, promptIndex) => {
+              const promptId = `prompt-${prompt.name}-${promptIndex}`;
               // const key = `${prompt.text.substring(0, 3)}${index}`;
-              console.log("delay:", `${index * 100 + "s"}`);
+              // console.log("delay:", `${index * 100 + "s"}`);
               // <pre>{JSON.stringify(prompt, null, 4)}</pre>
               // console.log("$$$", prompt.name, prompt.answers);
               return (
@@ -116,12 +124,12 @@ export default function Predict2023() {
                   text={prompt.text}
                   answers={prompt.answers}
                   name={prompt.name}
-                  key={prompt.name}
+                  key={promptId}
                   className={`
                     animate-[fadeIn_0.5s_ease-out_forwards]
                   `}
                   style={{
-                    animationDelay: `${((index + 2) * 2.5) / 10 + "s"}`,
+                    animationDelay: `${((promptIndex + 2) * 2.5) / 10 + "s"}`,
                   }}
                 />
               );
@@ -154,7 +162,7 @@ export default function Predict2023() {
             onClose={() => setOpen(false)}
           >
             <Teaser hidden={true}>
-              {res200.text.split("\n").map(function (item, index) {
+              {response.split("\n").map(function (item, index) {
                 return (
                   <span className="block mb-2 last:mb-0" key={index}>
                     {item}

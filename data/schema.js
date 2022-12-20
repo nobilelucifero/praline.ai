@@ -1,3 +1,11 @@
+export const initialData = {
+  industry: null,
+  style: null,
+  personality: null,
+  verbosity: null,
+  emoji: null,
+};
+
 export const formContent = {
   v: 1,
   prompts: [

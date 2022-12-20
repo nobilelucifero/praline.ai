@@ -1,16 +1,8 @@
 import { useState } from "react";
 
-import { formContent as content } from "../data/schema";
+import { initialData, formContent as content } from "../data/schema";
 
 export default function ApiTest() {
-  const initialData = {
-    industry: null,
-    style: null,
-    personality: null,
-    verbosity: null,
-    emoji: null,
-  };
-
   const [data, setData] = useState(initialData);
   const [currentData, setCurrentData] = useState();
   const [response, setResponse] = useState("");
@@ -42,15 +34,18 @@ export default function ApiTest() {
   // setLoading(true);
   // console.info("formContent", formContent.prompts);
 
-  const formData = {
-    industry: 0,
-    style: 0,
-    personality: 0,
-    verbosity: 0,
-    emojis: 2,
-  };
+  // const formData = {
+  //   industry: 0,
+  //   style: 0,
+  //   personality: 0,
+  //   verbosity: 0,
+  //   emojis: 2,
+  // };
 
   const submitValues = async (value) => {
+    const keys = Object.values(value).join("-");
+    console.log("currentData before", keys, value);
+
     const res = await fetch(`/api/lookup`, {
       method: "POST",
       body: JSON.stringify(value),
@@ -63,15 +58,16 @@ export default function ApiTest() {
     const APIdata = await res.json();
     const obj = JSON.parse(APIdata);
 
-    setCurrentData(Object.values(data).join("-"));
+    // setCurrentData(keys);
+    console.log("currentData after", keys);
 
     // let slug = (x) => {
     //   Object.values(x).join("-");
     // };
 
     // console.log("obj", obj);
-    console.log("response", currentData, obj[currentData]);
-    setResponse(obj[currentData]);
+    // console.log("response", currentData, obj[keys]);
+    setResponse(obj[keys]);
     // setData(obj[calcFormData]);
 
     // calcData
@@ -104,19 +100,20 @@ export default function ApiTest() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // setData({
-    //   industry: event.target.elements.industry.value,
-    //   style: event.target.elements.style.value,
-    //   personality: event.target.elements.personality.value,
-    //   verbosity: event.target.elements.verbosity.value,
-    //   emoji: event.target.elements.emoji.value,
-    // });
+    setData({
+      industry: event.target.elements.industry.value,
+      style: event.target.elements.style.value,
+      personality: event.target.elements.personality.value,
+      verbosity: event.target.elements.verbosity.value,
+      emoji: event.target.elements.emoji.value,
+    });
 
-    // setCurrentData(Object.values(data).join("-"));
+    const keys = Object.values(data).join("-");
+    setCurrentData(keys);
     // submitValues(currentData);
     submitValues(data);
 
-    console.table(currentData, data, Object.values(data));
+    // console.table(data, Object.values(data));
     // console.log();
   };
 
@@ -160,6 +157,7 @@ export default function ApiTest() {
               const { name, text, answers } = prompt;
               // console.log(answers);
               const promptId = `prompt-${name}-${promptIndex}`;
+              console.log("key", promptId);
 
               return (
                 <fieldset
@@ -172,6 +170,8 @@ export default function ApiTest() {
 
                   {answers.map((answer, index) => {
                     const answerId = `answer-${name}-${index}`;
+                    console.log("key", answerId);
+
                     return (
                       <div>
                         <input
@@ -228,7 +228,7 @@ export default function ApiTest() {
         <pre className="p-4 rounded-lg w-[720px] overflow-scroll bg-gray-100 font-mono whitespace-pre">
           {response.split("\n").map(function (item, index) {
             return (
-              <span className="block mb-2 last:mb-0" key={index}>
+              <span className="block mb-2 last:mb-0" key={`result=${index}`}>
                 {item}
                 <br />
               </span>
