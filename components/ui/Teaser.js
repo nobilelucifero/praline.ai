@@ -29,6 +29,12 @@ export function TeaserContent({ childToParent }) {
 
   const subscribe = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+
+    // if ((inputEl.current.value = null)) {
+    //   setMessage("You need to add a valid email.");
+    //   return;
+    // }
 
     // 3. Send a request to our API with the user's email address.
     const res = await fetch("/api/subscribe", {
@@ -46,13 +52,18 @@ export function TeaserContent({ childToParent }) {
     if (error) {
       // 4. If there was an error, update the message in state.
       setMessage(error);
+      // setMessage("Your email is already registered, or maybe try again later.");
 
       return;
     }
 
     // 5. Clear the input value and show a success message.
     inputEl.current.value = "";
-    setMessage("Success! 🎉 You are now subscribed to the newsletter.");
+    setMessage("Success! 🎉 You will hear from us soon.");
+
+    setTimeout(() => {
+      childToParent;
+    }, 1000);
   };
 
   return (
@@ -93,40 +104,41 @@ export function TeaserContent({ childToParent }) {
           <div>Premium</div>
         </TabPane>
       </Tabs> */}
-      <form onSubmit={subscribe}>
+      <form className="flex flex-col justify-center" onSubmit={subscribe}>
         {/* <Tabs
           className="
         bg-rose-500
       "
         > */}
-        <TabPane title={<EmailLabel />}>
-          <>
-            <label
-              className="
+        <div className="flex justify-center">
+          <label
+            className="
               hidden
             font-bold
             mb-2
           "
-              htmlFor="email-input"
-            >
-              Your email address
-            </label>
-            <input
-              className="
+            htmlFor="email-input"
+          >
+            Your email address
+          </label>
+          <input
+            className="
             py-2
-            px-2
+            px-4
             mx-2
             rounded-lg
+            bg-gray-100
+            placeholder-gray-500
           "
-              id="email-input"
-              name="email"
-              type="email"
-              ref={inputEl}
-              required
-              placeholder="email@provider.com"
-            />
-            <button
-              className="
+            id="email-input"
+            name="email"
+            type="email"
+            ref={inputEl}
+            required
+            placeholder="email@provider.com"
+          />
+          <button
+            className="
                 bg-gray-900
                 text-white
                 font-bold
@@ -134,11 +146,16 @@ export function TeaserContent({ childToParent }) {
                 px-4
                 rounded-lg
             "
-            >
-              Send
-            </button>
-          </>
-        </TabPane>
+          >
+            Send
+          </button>
+        </div>
+
+        <p className="mt-2 text-sm">
+          {message
+            ? message
+            : `We'll send you a short survey to let you enter the waitlist.`}
+        </p>
 
         {/* <TabPane title={<TwitterLabel />}>
           <>
@@ -191,13 +208,8 @@ export function TeaserContent({ childToParent }) {
           // onClick={setIsContentHidden(false)}
           onClick={() => childToParent()}
         >
-          Skip (this time)
+          Skip this time
         </button>
-        <div>
-          {message
-            ? message
-            : `I'll only send emails when new content is posted. No spam.`}
-        </div>
       </form>
     </div>
   );

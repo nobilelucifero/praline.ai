@@ -105,6 +105,7 @@ export default function Predict2023() {
               className="
               block
               text-sky-900
+              mt-1
             "
             >
               Powered by{" "}
@@ -113,8 +114,8 @@ export default function Predict2023() {
                 href="https://openai.com"
               >
                 ChatGPT
-              </a>
-              .
+              </a>{" "}
+              and some secret sauce ✨
             </small>
           </p>
           {/* <p>

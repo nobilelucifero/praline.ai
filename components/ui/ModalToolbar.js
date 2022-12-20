@@ -4,7 +4,7 @@ import { Button } from "../Button";
 
 export default function ModalToolbar({ input }) {
   const [textToCopy] = useState(input);
-  const [feedback, setFeedback] = useState(input);
+  const [feedback, setFeedback] = useState();
   return (
     <div className="mt-6">
       {/* <Button>Post on Twitter</Button> */}
