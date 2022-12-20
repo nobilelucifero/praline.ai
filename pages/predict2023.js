@@ -68,20 +68,27 @@ export default function Predict2023() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    setData({
+    const values = {
       industry: event.target.elements.industry.value,
       style: event.target.elements.style.value,
       personality: event.target.elements.personality.value,
       verbosity: event.target.elements.verbosity.value,
       emoji: event.target.elements.emoji.value,
-    });
+    };
+    // setData({
+    //   industry: event.target.elements.industry.value,
+    //   style: event.target.elements.style.value,
+    //   personality: event.target.elements.personality.value,
+    //   verbosity: event.target.elements.verbosity.value,
+    //   emoji: event.target.elements.emoji.value,
+    // });
 
     console.log("data", data);
 
     const keys = Object.values(data).join("-");
     setCurrentData(keys);
     // submitValues(currentData);
-    submitValues(data);
+    submitValues(values);
 
     // console.table(data, Object.values(data));
     // console.log();
