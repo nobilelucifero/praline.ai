@@ -1,5 +1,9 @@
 export function Wrapper(props) {
-  const { children } = props;
+  const { children, className } = props;
 
-  return <div className="mx-auto w-full max-w-7xl px-16">{children}</div>;
+  return (
+    <div className={`mx-auto w-full max-w-7xl px-16 ${className}`}>
+      {children}
+    </div>
+  );
 }

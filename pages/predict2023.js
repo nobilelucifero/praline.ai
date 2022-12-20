@@ -38,6 +38,16 @@ export default function Predict2023() {
   //   }));
   // };
 
+  // let url = "http://localhost:3000/predict2023";
+  // let domain = "localhost:3000";
+  // let linkedinShareURL = `https://www.linkedin.com/sharing/share-offsite/?mini=true&url=${url}&title=How%20to%20make%20custom%20linkedin%20share%20button&summary=some%20summary%20if%20you%20want&source=${domain}`;
+  // let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+  // width=0,height=0,left=-1000,top=-1000`;
+
+  // const shareOnLinkedin = () => {
+  //   window.open(linkedinShareURL, "Share on Linkedin", params);
+  // };
+
   const submitValues = async (value) => {
     const keys = Object.values(value).join("-");
 
@@ -107,6 +117,15 @@ export default function Predict2023() {
               .
             </small>
           </p>
+          {/* <p>
+            {/* <button 
+              // href={linkedinShareURL}
+              // target="_blank"
+              // onClick={shareOnLinkedin}
+            // >
+               Share on Linkedin 
+             </button> 
+          </p> */}
         </div>
         <form
           onSubmit={handleSubmit}
@@ -170,7 +189,7 @@ export default function Predict2023() {
                   </span>
                 );
               })}
-              <ModalToolbar />
+              <ModalToolbar input={response} />
             </Teaser>
           </Modal>
         </form>

@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import { formContent } from "../data/schema";
+
+import { Wrapper } from "../components/Wrapper";
 
 export default function Test() {
   const [content] = useState(formContent);
@@ -13,7 +18,7 @@ export default function Test() {
 }
 
 export function Slides({ data }) {
-  const items = useState(formContent);
+  const items = data;
   const [slideIndex, setSlideIndex] = useState(0);
   const length = data.length - 1;
 
@@ -34,31 +39,82 @@ export function Slides({ data }) {
   };
 
   return (
-    <div className="h-24">
+    <main className="relative">
+      <Slide>
+        <h1 className="mb-2 text-5xl font-bold">Predict 2023 with AI</h1>
+        <p className="text-xl">
+          Choose from a few prompts and impress your audience with the best
+          predictions for the upcoming year. 🔥
+          <small
+            className="
+              block
+              text-sky-900
+            "
+          >
+            Powered by{" "}
+            <a
+              className="border-b-2 border-sky-900 border-dotted hover:border-solid"
+              href="https://openai.com"
+            >
+              ChatGPT
+            </a>
+            .
+          </small>
+        </p>
+      </Slide>
       {items &&
         data.map((item, index) => {
           const { text, name, theme } = item;
 
           return (
-            <div
+            // <
+            //   }
+            //   className={
+            //     slideIndex === index
+            //       ? "w-full h-screen bg-gray-200 flex justify-center items-center align-items-center"
+            //       : "w-full h-screen hidden"
+            //   }
+            // >
+            <Slide
               key={`${name}-${index}`}
-              className={
-                slideIndex === index
-                  ? "w-[800px] h-[400px] bg-gray-200 flex justify-between items-center"
-                  : "w-[800px] h-[400px] hidden animate-none"
-              }
+              className={slideIndex === index ? "" : "hidden"}
             >
-              <div className="animate-slide-move-in">Slide no. {text}</div>
-              {/* {slideIndex === index ? "slide active-anim" : "slide"} */}
-            </div>
+              Slide no. {text}
+            </Slide>
+            //{/* {slideIndex === index ? "slide active-anim" : "slide"} */}
+            // </section>
           );
         })}
-      <div>
-        <BtnSlider moveSlide={prevSlide} direction={"prev"} />
-        <span className="mx-2"></span>
-        <BtnSlider moveSlide={nextSlide} direction={"next"} />
+
+      <div className="absolute flex left-0 bottom-0 w-full p-6 justify-between">
+        <div className="flex items-center bg-white py-3 px-4 rounded-lg mr-2">
+          <BtnSlider moveSlide={prevSlide} direction={"prev"} />
+          <span className="mx-2"></span>
+          <BtnSlider moveSlide={nextSlide} direction={"next"} />
+        </div>
+        <div className="flex items-center bg-white py-3 px-4 rounded-lg">
+          By{" "}
+          <Link
+            href="/"
+            className="
+            ml-2
+            font-bold
+            flex
+            items-center
+          "
+          >
+            <Image
+              width={32}
+              height={32}
+              src="/marmelade-logo.svg"
+              alt=" "
+            ></Image>
+            {/* 🍊 marmelade.ai */}
+            &nbsp; marmelade.ai
+          </Link>
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -67,5 +123,15 @@ export function BtnSlider({ direction, moveSlide }) {
     <button className="btn-slide" onClick={moveSlide}>
       {direction === "next" ? "Next ➡️" : "⬅️ Prev"}
     </button>
+  );
+}
+
+export function Slide({ children, className }) {
+  return (
+    <Wrapper
+      className={`w-full h-screen bg-gray-200 flex justify-center items-center align-items-center animate-slide-move-in bg-pink-300 ${className}`}
+    >
+      {children}
+    </Wrapper>
   );
 }
