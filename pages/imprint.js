@@ -37,20 +37,20 @@ export default function Imprint() {
         <ContentBlock>
           <H2>GDPR</H2>
           <P>
-            Marmelade AI GbR (hereinafter "MARMELADE”) is aware of the
+            Marmelade AI GbR (hereinafter &quot;MARMELADE&quot;) is aware of the
             importance to ensure the confidentiality and lawful processing of
             your data when you visit our website. We use the terms set out in
-            the General Data Protection Regulation (“GDPR”):
+            the General Data Protection Regulation (&quot;GDPR&quot;):
           </P>
           <P>
             <strong>Personal data</strong>: means any information relating to an
-            identified or identifiable natural person (“data subject“); an
-            identifiable natural person is one who can be identified, directly
-            or indirectly, in particular by reference to an identifier such as a
-            name, an identification number, location data, an online identifier
-            or to one or more factors specific to the physical, physiological,
-            genetic, mental, economic, cultural or social identity of that
-            natural person.
+            identified or identifiable natural person (&quot;data
+            subject&quot;); an identifiable natural person is one who can be
+            identified, directly or indirectly, in particular by reference to an
+            identifier such as a name, an identification number, location data,
+            an online identifier or to one or more factors specific to the
+            physical, physiological, genetic, mental, economic, cultural or
+            social identity of that natural person.
           </P>
 
           <P>
