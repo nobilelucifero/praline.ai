@@ -8,6 +8,9 @@ function Title(props) {
         text-2xl
         font-bold
         mb-6
+        w-[calc(100%_-_48px)]
+        text-center
+        lg:text-left
     "
     >
       {props.children}
@@ -77,9 +80,8 @@ export default function Modal({ isOpen, onClose, children, title }) {
     <div
       className="
         flex
-        items-center
+        lg:items-center
         justify-center
-        0content-center
         fixed
         left-0
         top-0
@@ -103,6 +105,10 @@ export default function Modal({ isOpen, onClose, children, title }) {
         overflow-hidden
         opacity-0
         animate-[fadeIn_0.25s_ease-out_forwards]
+        flex
+        flex-col
+        items-center
+        justify-center
       "
         onClick={(e) => e.stopPropagation()}
       >
