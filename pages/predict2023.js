@@ -88,9 +88,15 @@ export default function Predict2023() {
     const APIdata = await res.json();
     const obj = JSON.parse(APIdata);
     const result = obj[keys];
-    const resultWithWatermark = result
-      .replace("\n", "\n\n")
-      .concat("\n\nMade with marmelade.ai");
+    console.log("result", result);
+    const resultCleaned = result.replace(/\n\n/g, "\n");
+    console.log("resultCleaned", resultCleaned);
+    const resultFormatted = resultCleaned.replace(/\n/g, "\n\n");
+    console.log("resultFormatted", resultFormatted);
+    const resultWithWatermark = resultFormatted.concat(
+      "\n\nMade with marmelade.ai"
+    );
+    console.log("resultWithWatermark", resultWithWatermark);
 
     setResponse(resultWithWatermark);
   };

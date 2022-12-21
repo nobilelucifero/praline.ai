@@ -112,7 +112,10 @@ export default function Modal({ isOpen, onClose, children, title }) {
       "
         onClick={(e) => e.stopPropagation()}
       >
-        <CloseButton onClick={onClose}>Close</CloseButton>
+        <CloseButton onClick={() => (window.location = "./predict2023")}>
+          Close
+        </CloseButton>
+        {/* <CloseButton onClick={onClose}>Close</CloseButton> */}
         {title ? <Title>{title}</Title> : null}
         <div>{children}</div>
       </div>
