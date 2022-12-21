@@ -36,8 +36,8 @@ export const formContent = {
       answers: [
         "Professional",
         "Medieval bard",
-        "6 year old",
-        "tech-insider",
+        "5 year old",
+        "Tech Insider",
         "Gen Z",
         "Boomer",
       ],
