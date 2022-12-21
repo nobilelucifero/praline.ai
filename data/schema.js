@@ -23,7 +23,7 @@ export const formContent = {
       name: "style",
       text: "Style",
       prompt_type: "text",
-      answers: ["Professional", "Sarcastic", "Optimistic"],
+      answers: ["Neutral", "Sarcastic", "Optimistic", "Funny", "Pessimistic"],
       answers_type: "single_choice",
       theme: {
         bg: "bg-pink-500",
@@ -33,7 +33,14 @@ export const formContent = {
       name: "personality",
       text: "Personality",
       prompt_type: "text",
-      answers: ["Professional", "Medieval bard", "6 years old"],
+      answers: [
+        "Professional",
+        "Medieval bard",
+        "6 year old",
+        "tech-insider",
+        "Gen Z",
+        "Boomer",
+      ],
       answers_type: "single_choice",
       theme: {
         bg: "bg-pink-500",
