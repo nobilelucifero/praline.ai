@@ -277,14 +277,18 @@ export default function Predict2023() {
             onClose={() => setOpen(false)}
           >
             <Teaser hidden={true} output={response}>
-              {response.split("\n\n").map(function (item, index) {
-                return (
-                  <span className="block mb-2 last:mb-0" key={index}>
-                    {item}
-                    <br />
-                  </span>
-                );
-              })}
+              {response ? (
+                response.split("\n\n").map(function (item, index) {
+                  return (
+                    <span className="block mb-2 last:mb-0" key={index}>
+                      {item}
+                      <br />
+                    </span>
+                  );
+                })
+              ) : (
+                <p>Loading…</p>
+              )}
             </Teaser>
             {/* <ModalToolbar hidden={true} input={response} /> */}
           </Modal>
