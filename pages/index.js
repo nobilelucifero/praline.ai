@@ -103,6 +103,7 @@ export default function Home() {
               }}
               href="https://tally.so/r/wvXL5d"
               target="_blank"
+              rel="noreferrer"
             >
               Get early access
             </a>

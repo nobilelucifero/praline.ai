@@ -12,7 +12,7 @@ export default function Imprint() {
     <div>
       <Head>
         <title>Imprint - Marmelade.ai</title>
-        <meta name="description" content="Get predictin'!" />
+        <meta name="description" content="Marmelade.ai Imprint" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

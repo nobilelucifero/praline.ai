@@ -5,8 +5,9 @@ mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
   server: process.env.MAILCHIMP_API_SERVER, // e.g. us1
 });
+// export default function handler(req, res) {
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const { email } = req.body;
 
   if (!email) {
@@ -23,4 +24,4 @@ export default async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: error.message || error.toString() });
   }
-};
+}
