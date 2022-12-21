@@ -44,7 +44,7 @@ export default function Imprint() {
           </P>
           <P>
             <strong>Personal data</strong>: means any information relating to an
-            identified or identifiable natural person (‘data subject’); an
+            identified or identifiable natural person (“data subject“); an
             identifiable natural person is one who can be identified, directly
             or indirectly, in particular by reference to an identifier such as a
             name, an identification number, location data, an online identifier
@@ -81,8 +81,8 @@ export default function Imprint() {
           <P>
             <strong>Consent (of the data subject)</strong>: means any freely
             given, specific, informed and unambiguous indication of the data
-            subject’s wishes by which he or she, by a statement or by a clear
-            affirmative action, signifies agreement to the processing of
+            subject&quot;s wishes by which he or she, by a statement or by a
+            clear affirmative action, signifies agreement to the processing of
             personal data relating to him or her.
           </P>
         </ContentBlock>
