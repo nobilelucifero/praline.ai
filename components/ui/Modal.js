@@ -60,7 +60,13 @@ function CloseButton(props) {
 
 export default function Modal({ isOpen, onClose, children, title }) {
   useEffect(() => {
-    if (isOpen) document.body.className = "overflow-hidden";
+    if (isOpen) {
+      document.body.className = "overflow-hidden";
+      // Pageview
+      gtag("event", "page_view", {
+        page_title: title,
+      });
+    }
     if (!isOpen) document.body.className = "";
   }, [isOpen]);
 

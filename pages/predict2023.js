@@ -165,7 +165,7 @@ export default function Predict2023() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Marmelade.ai | Predict 2023 with marmeldate.ai</title>
         <meta name="description" content="Get predictin'!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
