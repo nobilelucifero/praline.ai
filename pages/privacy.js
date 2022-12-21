@@ -1,11 +1,15 @@
 import { useState } from "react";
 
 import Head from "next/head";
-import Image from "next/image";
+// import Image from "next/image";
 
 import Page from "../layouts/page";
 
-import { Button } from "../components/Button";
+import ContentBlock from "../components/website/ContentBlock";
+import H2 from "../components/website/H2";
+import H3 from "../components/website/H3";
+import P from "../components/website/P";
+// import { Button } from "../components/Button";
 
 export default function PrivacyPolicy() {
   return (
@@ -18,54 +22,46 @@ export default function PrivacyPolicy() {
 
       <Page className="bg-gray-100">
         <h1 className="text-3xl font-bold mb-12">Privacy policy</h1>
-        {/* <p>Information according to § 5 of the German Telemedia Act</p> */}
+        {/* <P>Information according to § 5 of the German Telemedia Act</P> */}
         <hr class="my-8 h-px bg-gray-300 border-0 dark:bg-gray-700" />
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">
-            1. Responsible for data processing
-          </h2>
-          <p>
+        <ContentBlock>
+          <H2>1. Responsible for data processing</H2>
+          <P>
             Marmelade AI GbR is responsible within the meaning of Article 4 Z 7
             GDPR. You can find at:
-          </p>
-          <p>
+          </P>
+          <P>
             Schönhauser Allee 43 <br />
             10435 Berlin <br />
             Germany <br />
             <a className="underline" href="mailto:katia@marmelade.ai">
               katia@marmelade.ai
             </a>
-          </p>
-          <h3 className="font-bold text-lg mt-6 mb-0">Representation</h3>
-          <p>Katia Yakovleva, Riccardo Buzzotta and Daniel Baumann</p>
+          </P>
+          <H3>Representation</H3>
+          <P>Katia Yakovleva, Riccardo Buzzotta and Daniel Baumann</P>
 
-          <h3 className="font-bold text-lg mt-6 mb-0">
-            Data protection officer
-          </h3>
-          <p>
+          <H3>Data protection officer</H3>
+          <P>
             Alvaro Suarez Rionegro <br />
             alvarosuarez@gmail.com
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">
-            2. Purposes to process your personal data
-          </h2>
+        <ContentBlock>
+          <H2>2. Purposes to process your personal data</H2>
 
-          <h3 className="font-bold text-lg mt-6 mb-0">
-            Use of the website and contact
-          </h3>
-          <p className="mb-4">
+          <H3>Use of the website and contact</H3>
+          <P>
             a. Processing purposes: We operate the Marmelade.ai website to
             provide information on Marmelade. To contact us, we provide a mail
             to link on the website that you can use to send us messages. In
             principle, the website can also be used without the processing of
             your personal data, whereby no contact can be made without your
             provision of personal data.
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             b. Categories of data: For the processing purposes mentioned above,
             we process your e-mail address, IP address, date and time of the
             request as well as additional personal data that you voluntarily
@@ -76,120 +72,114 @@ export default function PrivacyPolicy() {
             pages (referrer URL), the host name and the IP address of the device
             from which access is made and the date are also recorded and time
             stored in web server log files.
-          </p>
+          </P>
 
-          <p className="mb-4">
+          <P>
             c. Legal basis: We process personal data on the basis of legitimate
             legal interests (Article 6 Paragraph 1 lit f GDPR) for the proper
             operation of the website and for the provision of information about
             Marmelade.
-          </p>
+          </P>
 
-          <p className="mb-4">
+          <P>
             d. Duration of storage: We store personal data for the processing
             purposes mentioned above for the duration when visit the website or,
             in the case of a request via the mailto link, for the duration of
             the processing of the request.
-          </p>
+          </P>
 
-          <h3 className="font-bold text-lg mt-6 mb-0">
+          <H3>
             Processing of personal data for sending information about Marmelade
-          </h3>
-          <p className="mb-4">
+          </H3>
+          <P>
             a. Purposes of processing: Upon request, we will send information
             about Marmelade by email. For this we need personal data, without
             this data we cannot send the requested information.
-          </p>
+          </P>
 
-          <p className="mb-4">
+          <P>
             b. Categories of data: We process first and last name, gender, email
             address and user ID for the aforementioned processing purposes.
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             c. Legal basis: We process personal data for the processing purposes
             mentioned above on the basis of consent (Article 6 (1) (a) GDPR).
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             d. Duration of storage: We process personal data for the
             above-mentioned processing purposes up to the point at which the
             respective consent is revoked. A revocation means that we no longer
             process data from this point in time.
-          </p>
-          <p className="mb-4">
-            To revoke the consent, please contact us katia@marmelade.ai
-          </p>
+          </P>
+          <P>To revoke the consent, please contact us katia@marmelade.ai</P>
 
-          <h3 className="font-bold text-lg mt-6 mb-0">Legal Prosecution</h3>
-          <p className="mb-4">
+          <H3>Legal Prosecution</H3>
+          <P>
             a. Processing purposes: If there is a legal dispute, we store the
             data necessary for appropriate legal prosecution in order to
             transmit this to legal representatives and courts.
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             b. Categories of data: For the aforementioned processing purposes,
             we process contact details (e.g. first and last name, address),
             information and data in connection with the legal dispute in
             question (e.g. usage history or behavior in relation to the use of
             the website).
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             c. Legal basis: We process personal data on the basis of legitimate
             legal interests (Article 6 Paragraph 1 lit f in conjunction with
             Article 9 Paragraph 2 lit f GDPR) for appropriate legal prosecution.
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             d. Duration of storage: We store personal data for the
             above-mentioned processing purposes for as long as this is necessary
             to assert claims against the users or to defend ourselves against
             claims they have made against us or until the statutory limitation
             periods have expired, whereby the statutory limitation period for
             claims from the breach of contracts is three years.
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">
-            3. To which recipients will personal data be transmitted?
-          </h2>
-          <p className="mb-4">
+        <ContentBlock>
+          <H2>3. To which recipients will personal data be transmitted?</H2>
+          <P>
             3.1 In the course of our data processing, we transmit personal data
             to the following recipients to the extent necessary: called service
             providers, legal representatives, courts and administrative
             authorities as well as companies that are commissioned to support
             our company's internal IT infrastructure (software, hardware).
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             3.2 We use processors who perform services on our behalf. The
             processors may only process the data provided to them in accordance
             with our instructions and to the extent necessary for us to carry
             out services.
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">4. Profiling</h2>
-          <p className="mb-4">
+        <ContentBlock>
+          <H2>4. Profiling</H2>
+          <P>
             4.1 We process personal data neither automatically nor
             non-automatically with the aim of evaluating certain personal
             aspects (profiling).
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">
-            5. To what extent is there automated decision-making?
-          </h2>
-          <p className="mb-4">
+        <ContentBlock>
+          <H2>5. To what extent is there automated decision-making?</H2>
+          <P>
             5.1 We do not use fully automated decision-making in accordance with
             Article 22 GDPR. If we use these processes in the future, we will
             inform separately about this and the rights in this regard, provided
             this is required by law.
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">6. Rights</h2>
-          <p className="mb-4">
+        <ContentBlock>
+          <H2>6. Rights</H2>
+          <P>
             6.1 Users have the right to information under Article 15 GDPR, the
             right to rectification under Article 16 GDPR, the right to erasure
             under Article 17 GDPR, the right to restriction of processing under
@@ -198,19 +188,19 @@ export default function PrivacyPolicy() {
             including profiling, and the right to data portability in accordance
             with Art. 20 GDPR. In addition, there is a right of appeal to a
             competent data protection supervisory authority (Article 77 GDPR).
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             6.2 The competent supervisory authority is the German Federal Data
             Protection Authority - Berliner Beauftragte für Datenschutz und
             Informationsfreiheit (BlnBDI) Friedrichstraße 219, 10969 Berlin,
             Germany (https://www.datenschutz-berlin.de)
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">7. Cookie Information</h2>
-          <h3 className="font-bold text-lg mt-6 mb-0">What are cookies?</h3>
-          <p className="mb-4">
+        <ContentBlock>
+          <H2>7. Cookie Information</H2>
+          <H3>What are cookies?</H3>
+          <P>
             a. Cookies are small data sets that are generated by a web server,
             sent through the Internet and stored on an end device with the help
             of the browser program. The website uses "cookies" essentially to
@@ -218,71 +208,63 @@ export default function PrivacyPolicy() {
             information for the duration of the surfing or in the event of
             return. Cookies are also used to display behavior-based advertising
             and to control ad content.
-          </p>
+          </P>
 
-          <h3 className="font-bold text-lg mt-6 mb-0">
-            What types of cookies are there?
-          </h3>
-          <p className="mb-4">a. Distinction by domain</p>
-          <p className="mb-4">
+          <H3>What types of cookies are there?</H3>
+          <P>a. Distinction by domain</P>
+          <P>
             First party cookies: <br />
             Are sent and read exclusively from the domain of the service
             provider.
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             Third party cookies: <br />
             Are sent and read by domains from other service providers.
-          </p>
+          </P>
 
-          <h3 className="font-bold text-lg mt-6 mb-0">
-            Distinction according to storage duration
-          </h3>
-          <p className="mb-4">
+          <H3>Distinction according to storage duration</H3>
+          <P>
             Session cookies (session-id): Temporary cookies that are
             automatically deleted when the browser is closed. Session cookies
             enable the user's movements on the website to be recognized, so that
             information is retained. Without cookies, websites have no "memory".
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             Persistent cookies: Persistent cookies that have to be deleted
             manually or are deleted after a certain period of time. These
             cookies help the website to remember the user and their preferences;
             e.g. language selection, menu preferences, internal bookmarks or
             favorites.
-          </p>
+          </P>
 
-          <h3 className="font-bold text-lg mt-6 mb-0">
-            Differentiation by use
-          </h3>
-          <p className="mb-4">
+          <H3>Differentiation by use</H3>
+          <P>
             Technically necessary cookies: These cookies are required to ensure
             the functionality of the website and web application and cannot be
             deactivated for this reason.
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             Analysis cookies: These cookies collect anonymous information to
             create statistics to better understand user behavior on the website
             and in the web application and to improve the application.
-          </p>
-          <p className="mb-4">
+          </P>
+          <P>
             Marketing Cookies: These cookies store information about visited
             websites in order to display personalized advertisements.
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
 
-        <div className="mb-12">
-          <h2 className="font-bold text-xl mb-4">
-            8. Use of cookies without consent
-          </h2>
-          <p className="mb-4">
+        <ContentBlock>
+          <H2>8. Use of cookies without consent</H2>
+          <P>
             8.1 Marmelade is entitled to store cookies on the end device of the
             (informed) user, the sole purpose of which is to carry out or
             facilitate the transmission of a message over an electronic
             communications network, or, to the extent strictly necessary, to
             carry out a service expressly requested by the participant or user
             to provide a service (Art. 5 Para. 3 ePrivacy Directive).
-          </p>
-        </div>
+          </P>
+        </ContentBlock>
       </Page>
     </div>
   );
