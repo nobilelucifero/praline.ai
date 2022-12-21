@@ -7,14 +7,14 @@ import Image from "next/image";
 
 import Page from "../layouts/page";
 import Modal from "../components/ui/Modal";
-import ModalToolbar from "../components/ui/ModalToolbar";
+// import ModalToolbar from "../components/ui/ModalToolbar";
 import Teaser from "../components/ui/Teaser";
 import Prompt from "../components/predict2023/Prompt";
 
-const res200 = {
-  text: "1. Continued growth and maturation of the VC sector, with increasing amounts of capital flowing into startups and emerging industries.\n2. A focus on diversity and inclusion, with more VC firms looking to invest in underrepresented founders and ideas.\n3. The rise of environmental, social, and governance (ESG) investing, with more VC firms incorporating sustainability and impact into their investment strategies.\n4. An increasing emphasis on innovation and technology, with artificial intelligence, robotics, and other cutting-edge technologies becoming increasingly important to VC investors.\n5. Continued consolidation and evolution of the VC landscape, with larger, more established firms growing in size and influence, and newer, more specialized firms emerging to focus on specific industries and geographies.",
-  info: "success",
-};
+// const res200 = {
+//   text: "1. Continued growth and maturation of the VC sector, with increasing amounts of capital flowing into startups and emerging industries.\n2. A focus on diversity and inclusion, with more VC firms looking to invest in underrepresented founders and ideas.\n3. The rise of environmental, social, and governance (ESG) investing, with more VC firms incorporating sustainability and impact into their investment strategies.\n4. An increasing emphasis on innovation and technology, with artificial intelligence, robotics, and other cutting-edge technologies becoming increasingly important to VC investors.\n5. Continued consolidation and evolution of the VC landscape, with larger, more established firms growing in size and influence, and newer, more specialized firms emerging to focus on specific industries and geographies.",
+//   info: "success",
+// };
 
 export default function Predict2023() {
   const [data, setData] = useState(initialData);
@@ -42,12 +42,12 @@ export default function Predict2023() {
     //   ...prevState,
     //   [event.target.name]: event.target.value,
     // }));
-    console.log("Data was:", data);
+    // console.log("Data was:", data);
     // setData({
     //   [event.target.name]: event.target.value,
     // });
     setData({ ...data, [event.target.name]: event.target.value });
-    console.log("Data is:", data);
+    // console.log("Data is:", data);
   };
 
   // let url = "http://localhost:3000/predict2023";
@@ -114,41 +114,41 @@ export default function Predict2023() {
     //   emoji: event.target.elements.emoji.value,
     // });
 
-    console.log("data", data);
+    // console.log("data", data);
 
     const arrayValues = Object.values(values);
     const keys = Object.values(data).join("-");
 
-    console.log("values", arrayValues);
+    // console.log("values", arrayValues);
 
     if (basicValidation(arrayValues)) {
-      console.log(
-        "Form is complete ❌",
-        "values",
-        values,
-        "arrayValues",
-        arrayValues,
-        "data",
-        data,
-        "basicValidation",
-        basicValidation(arrayValues)
-      );
+      // console.log(
+      //   "Form is complete ❌",
+      //   "values",
+      //   values,
+      //   "arrayValues",
+      //   arrayValues,
+      //   "data",
+      //   data,
+      //   "basicValidation",
+      //   basicValidation(arrayValues)
+      // );
       setSubmitMessage({
         text: "Make sure to fill in all the prompts before submitting.",
         type: null,
       });
     } else {
-      console.log(
-        "Form is complete ✅",
-        "values",
-        values,
-        "arrayValues",
-        arrayValues,
-        "data",
-        data,
-        "basicValidation",
-        basicValidation(arrayValues)
-      );
+      // console.log(
+      //   "Form is complete ✅",
+      //   "values",
+      //   values,
+      //   "arrayValues",
+      //   arrayValues,
+      //   "data",
+      //   data,
+      //   "basicValidation",
+      //   basicValidation(arrayValues)
+      // );
       // setCurrentData(values);
       submitValues(values);
       setOpen(true);
@@ -266,7 +266,7 @@ export default function Predict2023() {
             isOpen={open}
             onClose={() => setOpen(false)}
           >
-            <Teaser hidden={true}>
+            <Teaser hidden={true} output={response}>
               {response.split("\n").map(function (item, index) {
                 return (
                   <span className="block mb-2 last:mb-0" key={index}>
@@ -275,8 +275,8 @@ export default function Predict2023() {
                   </span>
                 );
               })}
-              <ModalToolbar input={response} />
             </Teaser>
+            {/* <ModalToolbar hidden={true} input={response} /> */}
           </Modal>
         </form>
       </Page>

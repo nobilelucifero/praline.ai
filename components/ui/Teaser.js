@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 
+// import ModalToolbar from "../ui/ModalToolbar";
+
 import IconTwitter from "../icons/IconTwitter";
 import IconEmail from "../icons/IconEmail";
 
@@ -62,7 +64,7 @@ export function TeaserContent({ childToParent }) {
     setMessage("Success! 🎉 You will hear from us soon.");
 
     setTimeout(() => {
-      childToParent;
+      childToParent();
     }, 1000);
   };
 
@@ -151,7 +153,7 @@ export function TeaserContent({ childToParent }) {
           </button>
         </div>
 
-        <p className="mt-2 text-sm">
+        <p className="mt-2 text-sm text-center">
           {message
             ? message
             : `We'll send you a short survey to let you enter the waitlist.`}
@@ -206,7 +208,10 @@ export function TeaserContent({ childToParent }) {
             pt-2
           "
           // onClick={setIsContentHidden(false)}
-          onClick={() => childToParent()}
+          onClick={() => {
+            document.querySelector("#email-input").required = false;
+            childToParent();
+          }}
         >
           Skip this time
         </button>
@@ -215,16 +220,121 @@ export function TeaserContent({ childToParent }) {
   );
 }
 
-export default function Teaser({ children, hidden }) {
+export default function Teaser({ children, hidden, output }) {
   const [isContentHidden, setIsContentHidden] = useState(hidden);
 
-  console.log(isContentHidden);
+  const [feedback, setFeedback] = useState();
+
+  // console.log(isContentHidden);
+  // console.log("children", children);
 
   const childToParent = () => {
     setIsContentHidden(false);
   };
 
-  if (!isContentHidden) return <>{children}</>;
+  if (!isContentHidden)
+    return (
+      <div
+        className="
+        0pb-16
+      "
+      >
+        <textarea
+          name="text"
+          id="generated-text"
+          className="
+          w-full
+          min-h-[16rem]
+          border
+          border-gray-400
+          p-4
+          rounded-lg
+        "
+          readOnly
+          value={output}
+          onClick={(e) => {
+            e.target.select();
+          }}
+        />
+        <div className="mt-2">
+          {/* <Button>Post on Twitter</Button> */}
+          {/* <Button>Post on Linkedin</Button> */}
+          <button
+            className="inline-block
+      whitespace-nowrap
+    text-white
+    font-bold
+    tracking-wide
+    rounded-lg
+    px-4 py-3 mr-2
+    bg-gray-900
+    hover:bg-gray-800
+    focus:outline-none
+    focus:ring-4
+    focus:ring-blue-300"
+            onClick={() => {
+              navigator.clipboard.writeText(output);
+              // document.execCommand("copy", true, textToCopy);
+              setFeedback("✅ Prediction copied");
+            }}
+          >
+            Copy text
+          </button>
+          {feedback && (
+            <div className="bg-green-200 inline-block rounded-lg px-4 py-3">
+              {feedback}
+            </div>
+          )}
+        </div>
+        <div
+          className="
+                  mt-6
+                  pt-3
+                  pb-4
+                  p-4
+                  bg-orange-200
+                  rounded-lg
+                "
+        >
+          <h4
+            className="
+                    font-bold
+                    text-lg
+                  "
+          >
+            Interested in learning more?
+          </h4>
+          <p>We are putting content strategy on autopilot.</p>
+          <p>
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                gtag("event", "page_view", {
+                  page_title: "survey_view-index",
+                });
+                window.open("https://tally.so/r/wvXL5d");
+              }}
+              href="https://tally.so/r/wvXL5d"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                      inline-block
+                      mt-4
+                      bg-gray-900
+    tracking-wide
+    text-white
+                      py-2
+                      px-3
+                      font-bold
+                      rounded-lg
+                    "
+            >
+              Join the waitlist
+            </a>
+          </p>
+        </div>
+      </div>
+    );
 
   return (
     <div>
@@ -239,7 +349,7 @@ export default function Teaser({ children, hidden }) {
             : ``
         }
       >
-        {children}
+        <>{children}</>
         {isContentHidden ? (
           <div
             className="

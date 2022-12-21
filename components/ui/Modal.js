@@ -99,6 +99,7 @@ export default function Modal({ isOpen, onClose, children, title }) {
         py-6
         px-6
         rounded-xl
+        overflow-hidden
         opacity-0
         animate-[fadeIn_0.25s_ease-out_forwards]
       "
