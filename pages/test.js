@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { formContent } from "../data/schema";
+import { formContent } from "../data/schema2";
 
 import { Wrapper } from "../components/Wrapper";
 

@@ -1,7 +1,20 @@
-export default function Prompt(props) {
-  const { text, answers, name, className, style } = props;
+import { useState } from "react";
 
-  // const fieldsetId = `group-${name}`;
+export default function Prompt(props) {
+  const { text, answers, name, className, style, handleChange } = props;
+
+  // const [inputValues, setInputValues] = useState(
+  //   new Array(answers.length).fill(false)
+  // );
+
+  // console.log("inputValues", inputValues);
+
+  // const handleOnChange = (position) => {
+  //   const updatedInputValues = inputValues.map((item, index) =>
+  //     index === position ? !item : item
+  //   );
+  //   setInputValues(updatedInputValue, () => {});
+  // };
 
   return (
     <section
@@ -29,8 +42,9 @@ export default function Prompt(props) {
       <fieldset id={name}>
         {answers.map((answer, index) => {
           const id = `${name}-${index}`;
+
           return (
-            <div
+            <label
               className="
             flex items-center
             transition-all
@@ -47,31 +61,38 @@ export default function Prompt(props) {
             "
               key={id}
               // onClick={(e) => (e.target.children[0].checked = true)}
-              onClick={(e) => {
-                // e.stopPropagation();
-                if (e.target.children[0]) {
-                  e.target.children[0].checked = true;
-                }
-              }}
+              // onClick={(e) => {
+              //   e.stopPropagation();
+              //   // console.log(e.currentTarget, e.target.children[0]);
+              //   if (e.target.children[0]) {
+              //     e.target.children[0].checked = true;
+              //   }
+              // }}
             >
               <input
                 className="w-4 h-4 border-gray-300 focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:bg-blue-600 dark:bg-gray-700 dark:border-gray-600"
                 type="radio"
                 value={index}
+                // checked={inputValues[index]}
                 // value={id}
                 name={name}
                 id={id}
+                // onChange={(e) => {
+                //   handleOnChange(index);
+                //   handleChange;
+                // }}
+                onChange={handleChange}
               />
-              <label
+              <span
                 className="
                     block
                     ml-2
                   "
-                htmlFor={id}
+                // htmlFor={id}
               >
                 {answer}
-              </label>
-            </div>
+              </span>
+            </label>
           );
         })}
       </fieldset>

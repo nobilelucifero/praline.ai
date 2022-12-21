@@ -19,6 +19,10 @@ const res200 = {
 export default function Predict2023() {
   const [data, setData] = useState(initialData);
   const [currentData, setCurrentData] = useState();
+  const [submitMessage, setSubmitMessage] = useState({
+    text: null,
+    type: null,
+  });
   const [response, setResponse] = useState("");
   // const [content] = useState(content);
   // const [formData, setFormData] = useState({});
@@ -31,12 +35,20 @@ export default function Predict2023() {
   //   setResData(res200);
   // }, []);
 
-  // const handleChange = async (event) => {
-  //   setFormData((formData) => ({
-  //     ...formData,
-  //     [event.target.name]: event.target.value,
-  //   }));
-  // };
+  const handleChange = async (event) => {
+    // const prevData = data;`
+
+    // setData((prevState) => ({
+    //   ...prevState,
+    //   [event.target.name]: event.target.value,
+    // }));
+    console.log("Data was:", data);
+    // setData({
+    //   [event.target.name]: event.target.value,
+    // });
+    setData({ ...data, [event.target.name]: event.target.value });
+    console.log("Data is:", data);
+  };
 
   // let url = "http://localhost:3000/predict2023";
   // let domain = "localhost:3000";
@@ -47,6 +59,20 @@ export default function Predict2023() {
   // const shareOnLinkedin = () => {
   //   window.open(linkedinShareURL, "Share on Linkedin", params);
   // };
+
+  function basicValidation(array) {
+    // return array.some((el) => el == null || el == "");
+    return array.some((el) => el == null || el === "");
+    // let valid = false;
+    // for (var key in obj) {
+    // if (obj[key]) {
+    // console.log("obj[key]", obj[key]);
+    // valid = true;
+    // }
+    // }
+    // console.log("obj[key]", obj[key]);
+    // return valid;
+  }
 
   const submitValues = async (value) => {
     const keys = Object.values(value).join("-");
@@ -68,6 +94,11 @@ export default function Predict2023() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setSubmitMessage({
+      text: null,
+      type: null,
+    });
+
     const values = {
       industry: event.target.elements.industry.value,
       style: event.target.elements.style.value,
@@ -85,10 +116,47 @@ export default function Predict2023() {
 
     console.log("data", data);
 
+    const arrayValues = Object.values(values);
     const keys = Object.values(data).join("-");
-    setCurrentData(keys);
+
+    console.log("values", arrayValues);
+
+    if (basicValidation(arrayValues)) {
+      console.log(
+        "Form is complete ❌",
+        "values",
+        values,
+        "arrayValues",
+        arrayValues,
+        "data",
+        data,
+        "basicValidation",
+        basicValidation(arrayValues)
+      );
+      setSubmitMessage({
+        text: "Make sure to fill in all the prompts before submitting.",
+        type: null,
+      });
+    } else {
+      console.log(
+        "Form is complete ✅",
+        "values",
+        values,
+        "arrayValues",
+        arrayValues,
+        "data",
+        data,
+        "basicValidation",
+        basicValidation(arrayValues)
+      );
+      // setCurrentData(values);
+      submitValues(values);
+      setOpen(true);
+    }
+
+    // setCurrentData(keys);
     // submitValues(currentData);
-    submitValues(values);
+    // submitValues(values);
 
     // console.table(data, Object.values(data));
     // console.log();
@@ -148,6 +216,7 @@ export default function Predict2023() {
               // console.log("$$$", prompt.name, prompt.answers);
               return (
                 <Prompt
+                  // handleChange={handleChange}
                   text={prompt.text}
                   answers={prompt.answers}
                   name={prompt.name}
@@ -168,7 +237,7 @@ export default function Predict2023() {
             font-bold
             tracking-wide
             rounded-lg
-            px-4 py-3 mr-2
+            px-4 py-3 mb-2
             bg-gray-900
             hover:bg-gray-800
             0dark:bg-gray-50
@@ -179,10 +248,19 @@ export default function Predict2023() {
             0dark:focus:ring-blue-500
             "
             type="submit"
-            onClick={() => setOpen(true)}
+            // onClick={() => {
+            //   basicValidation(values) ? setOpen(true) : null;
+            // }}
           >
             Submit
           </button>
+
+          {submitMessage.text && (
+            <div className="inline-block px-4 py-3 ml-2 bg-red-200 rounded-lg">
+              {submitMessage.text}
+            </div>
+          )}
+
           <Modal
             title="Your trend predictions 2023 are ready!"
             isOpen={open}
