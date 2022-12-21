@@ -1,22 +1,7 @@
-import { useState, useEffect } from "react";
-
 import Head from "next/head";
 import Image from "next/image";
-import HeroImage from "../public/hero.jpg";
 
-import Link from "next/link";
 import Page from "../layouts/page";
-
-import { Section } from "../components/Section";
-
-import { Button } from "../components/Button";
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
-
-const res200 = {
-  text: "1. Continued growth and maturation of the VC sector, with increasing amounts of capital flowing into startups and emerging industries.\n2. A focus on diversity and inclusion, with more VC firms looking to invest in underrepresented founders and ideas.\n3. The rise of environmental, social, and governance (ESG) investing, with more VC firms incorporating sustainability and impact into their investment strategies.\n4. An increasing emphasis on innovation and technology, with artificial intelligence, robotics, and other cutting-edge technologies becoming increasingly important to VC investors.\n5. Continued consolidation and evolution of the VC landscape, with larger, more established firms growing in size and influence, and newer, more specialized firms emerging to focus on specific industries and geographies.",
-  info: "success",
-};
 
 export default function Home() {
   // const [data, setData] = useState(null);
@@ -62,7 +47,7 @@ export default function Home() {
         ></meta>
       </Head>
 
-      <Page>
+      <Page showPromoMessage={true}>
         <div className="flex flex-col-reverse lg:flex-row items-center">
           <div className="lr:pr-8 lg:basis-2/5">
             <h1

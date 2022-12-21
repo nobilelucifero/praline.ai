@@ -12,6 +12,10 @@ module.exports = {
         "slide-move-out": "slideMoveOut 0.25s ease-out forwards",
       },
       keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
         fadeIn: {
           "0%": { opacity: "0", transform: "translateY(3rem)" },
           "100%": { opacity: "1", transform: "translateY(0)" },

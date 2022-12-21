@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Section } from "../components/Section";
+import PromoBanner from "../components/predict2023/PromoBanner";
 
-export function Navbar(props) {
-  const { children } = props;
-
+export function Navbar({ children, message }) {
   return (
     <header>
+      {message && <PromoBanner />}
       <Section>
         <Link
           href="/"
