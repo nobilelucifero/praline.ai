@@ -63,8 +63,8 @@ export default function Home() {
       </Head>
 
       <Page>
-        <div className="flex items-center">
-          <div className="lr:pr-8 basis-2/5">
+        <div className="flex flex-col-reverse lg:flex-row items-center">
+          <div className="lr:pr-8 lg:basis-2/5">
             <h1
               className="
           text-3xl
@@ -108,7 +108,7 @@ export default function Home() {
               Get early access
             </a>
           </div>
-          <div className="lg:pl-8 basis-3/5">
+          <div className="lg:pl-8 lg:basis-3/5 mb-12 lg:mb-0">
             <Image
               width={592}
               height={592}
