@@ -34,7 +34,7 @@ export default function PromoBanner({ children }) {
       </p> */}
         <p className="text-center font-bold text-white tracking-wide 0animate-[marquee_15s_linear_infinite]">
           <Link className="" href="/predict2023">
-            Predict what'll happen next year with AI.{" "}
+            Predict what&apos;ll happen next year with AI.{" "}
             <span className="opacity-70">#predict2023</span>
             {/* <span className="mr-4"> */}
             <span className="inline-block ml-2 underline">
