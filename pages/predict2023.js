@@ -87,8 +87,12 @@ export default function Predict2023() {
 
     const APIdata = await res.json();
     const obj = JSON.parse(APIdata);
+    const result = obj[keys];
+    const resultWithWatermark = result
+      .replace("\n", "\n\n")
+      .concat("\n\nMade with marmelade.ai");
 
-    setResponse(obj[keys]);
+    setResponse(resultWithWatermark);
   };
 
   const handleSubmit = async (event) => {
@@ -267,7 +271,7 @@ export default function Predict2023() {
             onClose={() => setOpen(false)}
           >
             <Teaser hidden={true} output={response}>
-              {response.split("\n").map(function (item, index) {
+              {response.split("\n\n").map(function (item, index) {
                 return (
                   <span className="block mb-2 last:mb-0" key={index}>
                     {item}
