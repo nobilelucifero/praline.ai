@@ -8,6 +8,7 @@ import ContentBlock from "../components/website/ContentBlock";
 import H2 from "../components/website/H2";
 import H3 from "../components/website/H3";
 import P from "../components/website/P";
+import { render } from "react-dom";
 
 export default function PrivacyPolicy() {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -94,37 +95,58 @@ export default function PrivacyPolicy() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Page className="bg-gray-100">
-        <div>
-          <div
-            className="
-              flex
-              items-center
-              justify-items-center
-              width-[400px] height-[300px]
+      <div className="bg-gray-100">
+        {sliderData.map((slide, slideDataIndex) => {
+          console.log("slide", slide);
+          return (
+            <Slide
+              className={`${
+                slideIndex == slideDataIndex ? "bg-pink-300" : "bg-sky-300"
+              }`}
+              title={slide.title}
+            />
+          );
+        })}
+        {/* <Slide
+          className="
+              bg-pink-300
             "
-          >
-            <h1 className="text-xl font-bold">
-              {sliderData[slideIndex].title}
-            </h1>
-          </div>
-          <div className="flex flex-row gap-6">
-            <button
-              className={`${slideIndexStart ? "opacity-50" : null}`}
-              onClick={dec}
-            >
-              &larr; Prev
-            </button>
+          title={sliderData[slideIndex].title}
+        /> */}
 
-            <button
-              className={`${slideIndexEnd ? "opacity-50" : null}`}
-              onClick={inc}
-            >
-              Next &rarr;
-            </button>
-          </div>
+        {/* Controls */}
+        <div className="flex flex-row gap-6">
+          <button
+            className={`${slideIndexStart ? "opacity-50" : null}`}
+            onClick={dec}
+          >
+            &larr; Prev
+          </button>
+
+          <button
+            className={`${slideIndexEnd ? "opacity-50" : null}`}
+            onClick={inc}
+          >
+            Next &rarr;
+          </button>
         </div>
-      </Page>
+      </div>
     </div>
   );
 }
+
+const Slide = ({ title, className }) => {
+  return (
+    <div
+      className={`
+        flex
+        items-center
+        justify-items-center
+        w-[400px] h-[300px]
+        ${className}
+      `}
+    >
+      <h1 className="text-xl font-bold">{title}</h1>
+    </div>
+  );
+};
