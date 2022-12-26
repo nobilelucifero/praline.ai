@@ -94,7 +94,7 @@ export default function Predict2023() {
     const resultFormatted = resultCleaned.replace(/\n/g, "\n\n");
     console.log("resultFormatted", resultFormatted);
     const resultWithWatermark = resultFormatted.concat(
-      "\n\nMade with marmelade.ai"
+      "\n\nMade with praline.ai"
     );
     console.log("resultWithWatermark", resultWithWatermark);
 
@@ -175,7 +175,7 @@ export default function Predict2023() {
   return (
     <div>
       <Head>
-        <title>Marmelade.ai | Predict 2023 with marmeldate.ai</title>
+        <title>Praline.ai | Predict 2023 with marmeldate.ai</title>
         <meta name="description" content="Get predictin'!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

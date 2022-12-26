@@ -90,8 +90,8 @@ export default function PrivacyPolicy() {
   return (
     <div>
       <Head>
-        <title>Slider - Marmelade.ai</title>
-        <meta name="description" content="Marmelade.ai Slider" />
+        <title>Slider - Praline.ai</title>
+        <meta name="description" content="Praline.ai Slider" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

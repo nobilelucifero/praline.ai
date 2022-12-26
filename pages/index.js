@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className="bg-sky-300">
       <Head>
-        <title>Marmelade.ai</title>
+        <title>Praline.ai</title>
         <meta
           name="description"
           content="Put your content strategy on autopilot with AI"

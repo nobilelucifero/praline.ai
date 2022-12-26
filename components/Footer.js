@@ -11,7 +11,7 @@ export function Footer(props) {
         <p>
           <small>
             <span className="inline-block mr-2">
-              &copy; Copyright {new Date().getFullYear()} marmelade.ai
+              &copy; Copyright {new Date().getFullYear()} praline.ai
             </span>
             <Link href="/privacy" className="underline inline-block ml-2">
               Privacy
