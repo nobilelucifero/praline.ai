@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import * as ReactDOM from "react-dom";
 
+import Image from "next/image";
+
+import Page from "../../layouts/page";
+
 function Title(props) {
   return (
     <h1
@@ -41,7 +45,7 @@ function CloseButton(props) {
     <button
       className="
         block
-        absolute
+        fixed
         top-5
         right-6
         w-10
@@ -82,6 +86,7 @@ export default function Modal({ isOpen, onClose, children, title }) {
         flex
         lg:items-center
         justify-center
+        p-12
         fixed
         left-0
         top-0
@@ -96,28 +101,56 @@ export default function Modal({ isOpen, onClose, children, title }) {
       <div
         className="
         relative
-        bg-white
-        w-[36rem]
-        max-w-xl
+        0bg-white
+        bg-orange-300
+        w-full
+        0w-[36rem]
+        0max-w-[1280px]
+        max-h-[calc(100vh_-_96px)]
         py-6
         px-6
         rounded-xl
-        overflow-hidden
+        overflow-y-scroll
         opacity-0
         animate-[fadeIn_0.25s_ease-out_forwards]
         flex
         flex-col
-        items-center
-        justify-center
+        0items-center
+        0justify-center
       "
         onClick={(e) => e.stopPropagation()}
       >
+        <Page contentOnly={true}>
+          <div className="flex flex-col-reverse lg:flex-row items-center">
+            <div className="lr:pr-8 lg:basis-2/5">
+              <h1
+                className="
+          text-3xl
+          font-bold
+          mb-6
+          lg:w-5/6
+          "
+              >
+                {title ? <>{title}</> : null}
+              </h1>
+              <div>{children}</div>
+            </div>
+
+            <div className="lg:pl-8 flex items-center justify-center lg:basis-3/5 mb-12 lg:mb-0">
+              <Image
+                width={480}
+                height={480}
+                src={"/prediction-ready.png"}
+                alt=" "
+                priority="true"
+              />
+            </div>
+          </div>
+        </Page>
         <CloseButton onClick={() => (window.location = "./predict2023")}>
           Close
         </CloseButton>
         {/* <CloseButton onClick={onClose}>Close</CloseButton> */}
-        {title ? <Title>{title}</Title> : null}
-        <div>{children}</div>
       </div>
     </div>,
     document.body

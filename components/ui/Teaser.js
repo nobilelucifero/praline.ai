@@ -129,8 +129,9 @@ export function TeaserContent({ childToParent }) {
             px-4
             mx-2
             rounded-lg
-            bg-gray-100
-            placeholder-gray-500
+            0bg-gray-100
+            0placeholder-gray-500
+            bg-white
           "
             id="email-input"
             name="email"
@@ -147,6 +148,7 @@ export function TeaserContent({ childToParent }) {
                 py-2
                 px-4
                 rounded-lg
+                tracking-wide
             "
           >
             Send
@@ -239,28 +241,37 @@ export default function Teaser({ children, hidden, output }) {
         0pb-16
       "
       >
-        <textarea
-          name="text"
-          id="generated-text"
+        <div
           className="
+          p-4
+          bg-gray-100
+          rounded-xl
+        "
+        >
+          <textarea
+            name="text"
+            id="generated-text"
+            className="
           w-full
           min-h-[16rem]
-          border
-          border-gray-400
-          p-4
-          rounded-lg
+          py-2
+            px-4
+            rounded-lg
+            bg-white
+            border
+            border-gray-300
         "
-          readOnly
-          value={output}
-          onClick={(e) => {
-            e.target.select();
-          }}
-        />
-        <div className="mt-2">
-          {/* <Button>Post on Twitter</Button> */}
-          {/* <Button>Post on Linkedin</Button> */}
-          <button
-            className="inline-block
+            readOnly
+            value={output}
+            onClick={(e) => {
+              e.target.select();
+            }}
+          />
+          <div className="mt-2">
+            {/* <Button>Post on Twitter</Button> */}
+            {/* <Button>Post on Linkedin</Button> */}
+            <button
+              className="inline-block
       whitespace-nowrap
     text-white
     font-bold
@@ -272,20 +283,22 @@ export default function Teaser({ children, hidden, output }) {
     focus:outline-none
     focus:ring-4
     focus:ring-blue-300"
-            onClick={() => {
-              navigator.clipboard.writeText(output);
-              // document.execCommand("copy", true, textToCopy);
-              setFeedback("✅ Prediction copied");
-            }}
-          >
-            Copy text
-          </button>
-          {feedback && (
-            <div className="bg-green-200 inline-block rounded-lg px-4 py-3">
-              {feedback}
-            </div>
-          )}
+              onClick={() => {
+                navigator.clipboard.writeText(output);
+                // document.execCommand("copy", true, textToCopy);
+                setFeedback("✅ Prediction copied");
+              }}
+            >
+              Copy text
+            </button>
+            {feedback && (
+              <div className="bg-green-200 inline-block rounded-lg px-4 py-3">
+                {feedback}
+              </div>
+            )}
+          </div>
         </div>
+
         <div
           className="
                   mt-6
@@ -357,7 +370,7 @@ export default function Teaser({ children, hidden, output }) {
                 bottom-0
                 w-full
                 h-24
-                bg-gradient-to-t from-white
+                bg-gradient-to-t from-orange-300
               "
           ></div>
         ) : (
