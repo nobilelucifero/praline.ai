@@ -17,14 +17,13 @@ export function Navbar({ children, message }) {
             items-center
           "
         >
-          <Image
+          {/* <Image
             width={32}
             height={32}
             src="/marmelade-logo.svg"
             alt=" "
-          ></Image>
-          {/* 🍊 marmelade.ai */}
-          &nbsp; marmelade.ai
+          ></Image> */}
+          &nbsp; praline.ai
         </Link>
       </Section>
     </header>
