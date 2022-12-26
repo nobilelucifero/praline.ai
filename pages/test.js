@@ -103,12 +103,12 @@ export function Slides({ data }) {
             items-center
           "
           >
-            {/* <Image
+            <Image
               width={32}
               height={32}
-              src="/marmelade-logo.svg"
+              src="/praline-logo.svg"
               alt=" "
-            ></Image> */}
+            ></Image>
             &nbsp; praline.ai
           </Link>
         </div>

@@ -100,6 +100,7 @@ export default function PrivacyPolicy() {
           console.log("slide", slide);
           return (
             <Slide
+              key={slideDataIndex}
               className={`${
                 slideIndex == slideDataIndex ? "bg-pink-300" : "bg-sky-300"
               }`}

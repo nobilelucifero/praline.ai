@@ -17,12 +17,7 @@ export function Navbar({ children, message }) {
             items-center
           "
         >
-          {/* <Image
-            width={32}
-            height={32}
-            src="/marmelade-logo.svg"
-            alt=" "
-          ></Image> */}
+          <Image width={32} height={32} src="/praline-logo.svg" alt=" "></Image>
           &nbsp; praline.ai
         </Link>
       </Section>
