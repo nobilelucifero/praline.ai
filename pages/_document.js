@@ -57,6 +57,7 @@ export default function Document() {
           />
         )}
         <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="color-scheme" content="light only" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
