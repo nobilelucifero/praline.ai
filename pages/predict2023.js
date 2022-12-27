@@ -180,7 +180,7 @@ export default function Predict2023() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Page className="bg-sky-300">
+      <Page className="bg-gray-100">
         <div className="mb-24 animate-[fadeIn_0.5s_ease-out_forwards]">
           <h1 className="mb-2 text-5xl font-bold">Predict 2023 with AI</h1>
           <p className="text-xl">
@@ -272,7 +272,7 @@ export default function Predict2023() {
           )}
 
           <Modal
-            title="Your trend predictions 2023 are ready!"
+            title="Your trend predictions for 2023 are ready!"
             isOpen={open}
             onClose={() => setOpen(false)}
           >

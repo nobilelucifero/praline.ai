@@ -33,7 +33,7 @@ export default function Home() {
   // if (!data) return <p>No profile data</p>;
 
   return (
-    <div className="bg-sky-300">
+    <div className="bg-gray-100">
       <Head>
         <title>Praline.ai</title>
         <meta

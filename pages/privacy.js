@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
       <Page className="bg-gray-100">
         <h1 className="text-3xl font-bold mb-12">Privacy policy</h1>
         {/* <P>Information according to § 5 of the German Telemedia Act</P> */}
-        <hr className="my-8 h-px bg-gray-300 border-0 dark:bg-gray-700" />
+        <hr className="my-8 h-px bg-gray-100 border-0 dark:bg-gray-700" />
 
         <ContentBlock>
           <H2>1. Responsible for data processing</H2>
