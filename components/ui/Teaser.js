@@ -345,6 +345,49 @@ export default function Teaser({ children, hidden, output }) {
             </a>
           </p>
         </div>
+
+        <div
+          className="
+                  mt-6
+                  pt-3
+                  pb-4
+                  p-4
+                  bg-orange-200
+                  rounded-lg
+                "
+        >
+          <h4
+            className="
+                    font-bold
+                    text-lg
+                  "
+          >
+            Want to have another go?
+          </h4>
+          <p>Simply hit the button below or close this window.</p>
+          <p>
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                location.reload();
+              }}
+              href="#"
+              rel="noopener noreferrer"
+              className="
+                      inline-block
+                      mt-4
+                      bg-gray-900
+    tracking-wide
+    text-white
+    px-4 py-3
+                      font-bold
+                      rounded-lg
+                    "
+            >
+              Start again
+            </a>
+          </p>
+        </div>
       </div>
     );
 
