@@ -189,18 +189,18 @@ export default function Predict2023() {
             <small
               className="
               block
-              text-sky-900
+              text-gray-800
               mt-1
             "
             >
               Powered by{" "}
               <a
-                className="border-b-2 border-sky-900 border-dotted hover:border-solid"
+                className="border-b-2 border-gray-900 border-dotted hover:border-solid"
                 href="https://openai.com"
               >
                 ChatGPT
               </a>{" "}
-              and some secret sauce ✨
+              and some secret sauce. ✨
             </small>
           </p>
           {/* <p>

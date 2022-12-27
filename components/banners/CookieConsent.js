@@ -33,7 +33,7 @@ export default function CookieConsent() {
     <div
       className={`
         fixed bottom-6 0w-[calc(100%_-_48px)]
-        right-6 pt-5 pb-6 px-6
+        right-6 pt-5 pb-2 px-6
         rounded-lg
         md:max-w-xs
         bg-white ${consent ? "hidden" : ""}
@@ -47,21 +47,24 @@ export default function CookieConsent() {
         content. By clicking “Agree”, you consent to our Cookie Policy.
       </p>
 
-      <div className="w-full grid grid-cols-2 gap-2 my-4 mb-2">
+      <div className="w-full grid grid-cols-2 gap-2 my-4 mb-0">
         <button
           onClick={(e) => denyCookie()}
           className="
-          block px-4 py-3
-          whitespace-nowrap
           text-gray-900
           font-bold
           tracking-wide
           rounded-lg
-          bg-gray-300
-          hover:bg-gray-400
+          px-4 py-3
+          border-2
+          border-gray-300
+          hover:bg-gray-100
+          0dark:bg-gray-50
+          0dark:hover:bg-gray-100
           focus:outline-none
           focus:ring-4
           focus:ring-blue-300
+          0dark:focus:ring-blue-500
           "
         >
           Deny
@@ -98,10 +101,10 @@ export default function CookieConsent() {
           font-bold
           tracking-wide
           rounded-lg
-          px-4 py-3
-          border-2
+          px-4 py-4 mt-2
+          border-0
           border-gray-300
-          hover:bg-gray-800
+          hover:bg-gray-100
           0dark:bg-gray-50
           0dark:hover:bg-gray-100
           focus:outline-none
