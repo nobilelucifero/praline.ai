@@ -93,7 +93,7 @@ export function TeaserContent({ childToParent }) {
         >
           Time to post your prediction
         </h3>
-        <p>Sign up for early updates on marmelade.ai.</p>
+        <p>Sign up for early updates on praline.ai.</p>
       </div>
       {/* <Tabs>
         <TabPane title="Basic">
@@ -244,7 +244,7 @@ export default function Teaser({ children, hidden, output }) {
         <div
           className="
           p-4
-          bg-gray-100
+          bg-orange-200
           rounded-xl
         "
         >
@@ -256,10 +256,10 @@ export default function Teaser({ children, hidden, output }) {
           min-h-[16rem]
           py-2
             px-4
-            rounded-lg
+            rounded
             bg-white
-            border
-            border-gray-300
+            border-0
+            border-orange-300
         "
             readOnly
             value={output}
@@ -336,8 +336,7 @@ export default function Teaser({ children, hidden, output }) {
                       bg-gray-900
     tracking-wide
     text-white
-                      py-2
-                      px-3
+    px-4 py-3
                       font-bold
                       rounded-lg
                     "
