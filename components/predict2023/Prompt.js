@@ -52,7 +52,7 @@ export default function Prompt(props) {
             cursor-pointer
             shadow-none
             hover:shadow-xl
-            bg-gray-100
+            bg-gray-200
             first:mt-2
             mb-2
             px-4

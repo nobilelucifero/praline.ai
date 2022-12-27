@@ -81,7 +81,7 @@ export default function Imprint() {
           <P>
             <strong>Consent (of the data subject)</strong>: means any freely
             given, specific, informed and unambiguous indication of the data
-            subject&quot;s wishes by which he or she, by a statement or by a
+            subject&apos;s wishes by which he or she, by a statement or by a
             clear affirmative action, signifies agreement to the processing of
             personal data relating to him or her.
           </P>
