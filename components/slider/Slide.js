@@ -1,6 +1,15 @@
-const Slide = ({ slideDataIndex, setSlideIndex, title, className }) => {
+const Slide = ({
+  // key,
+  innerRef,
+  slideDataIndex,
+  setSlideIndex,
+  title,
+  className,
+}) => {
   return (
     <div
+      ref={innerRef}
+      // key={key}
       className={`
           flex
           items-center

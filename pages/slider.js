@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect, createRef } from "react";
+import { useCallback, useState, useEffect, useRef, createRef } from "react";
 
 import Head from "next/head";
 
@@ -35,10 +35,11 @@ export default function PrivacyPolicy() {
     sliderData.length - 1
   );
 
-  const refs = sliderData.reduce((acc, value) => {
-    acc[value] = createRef();
-    return acc;
-  }, {});
+  // const refs = sliderData.reduce((acc, value) => {
+  //   acc[value] = createRef();
+  //   return acc;
+  // }, {});
+  const refs = useRef([]);
 
   const inc = () => {
     if (slideIndexEnd) return;
@@ -73,17 +74,22 @@ export default function PrivacyPolicy() {
     if (slideIndex < sliderDataLength) {
       setSlideIndexEnd(false);
     }
+
+    console.log("???", refs.current, slideIndex, refs[slideIndex]);
+    // refs[slideIndex].current.scrollIntoView({
+    // behavior: "smooth",
+    // });
   }, [slideIndex]);
 
   return (
-    <div>
+    <div className="relative 0h-screen bg-gray-100">
       <Head>
         <title>Slider - Praline.ai</title>
         <meta name="description" content="Praline.ai Slider" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-gray-100">
+      <div className="absolute top-0 left-0">
         {sliderData.map((slide, slideDataIndex) => {
           console.log("slide", slide);
           return (
@@ -95,26 +101,26 @@ export default function PrivacyPolicy() {
                 slideIndex == slideDataIndex ? "bg-pink-300" : "bg-sky-300"
               }`}
               title={slide.title}
+              innerRef={(ref) => refs.current.push(ref)}
             />
           );
         })}
+      </div>
+      {/* Controls */}
+      <div className="flex flex-row gap-6 fixed top-0 left-0">
+        <button
+          className={`${slideIndexStart ? "opacity-50" : null}`}
+          onClick={dec}
+        >
+          &larr; Prev
+        </button>
 
-        {/* Controls */}
-        <div className="flex flex-row gap-6">
-          <button
-            className={`${slideIndexStart ? "opacity-50" : null}`}
-            onClick={dec}
-          >
-            &larr; Prev
-          </button>
-
-          <button
-            className={`${slideIndexEnd ? "opacity-50" : null}`}
-            onClick={inc}
-          >
-            Next &rarr;
-          </button>
-        </div>
+        <button
+          className={`${slideIndexEnd ? "opacity-50" : null}`}
+          onClick={inc}
+        >
+          Next &rarr;
+        </button>
       </div>
     </div>
   );

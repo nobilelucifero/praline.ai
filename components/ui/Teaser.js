@@ -400,6 +400,7 @@ export default function Teaser({ children, hidden, output }) {
               relative
               h-40
               overflow-hidden
+              w-[calc(100%_+_32px)]
               `
             : ``
         }
@@ -409,6 +410,7 @@ export default function Teaser({ children, hidden, output }) {
             isContentHidden
               ? `
               px-4
+              -ml-4
               relative
               h-40`
               : ``
