@@ -404,20 +404,31 @@ export default function Teaser({ children, hidden, output }) {
             : ``
         }
       >
-        <>{children}</>
-        {isContentHidden ? (
-          <div
-            className="
+        <div
+          className={
+            isContentHidden
+              ? `
+              px-4
+              relative
+              h-40`
+              : ``
+          }
+        >
+          <>{children}</>
+          {isContentHidden ? (
+            <div
+              className="
                 absolute
                 bottom-0
                 w-full
                 h-24
                 bg-gradient-to-t from-gray-100
               "
-          ></div>
-        ) : (
-          ""
-        )}
+            ></div>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       {isContentHidden ? <TeaserContent childToParent={childToParent} /> : ""}
     </div>

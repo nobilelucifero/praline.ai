@@ -160,7 +160,7 @@ export default function Predict2023() {
             <Teaser hidden={true} output={response}>
               <div
                 className="
-                flex flex-col 0lg:flex-row
+                flex flex-col
               "
               >
                 {response ? (
@@ -171,9 +171,10 @@ export default function Predict2023() {
                         block
                         mb-2
                         last:mb-0
-                        p-8
+                        p-4
+                        lg:p-8
                         bg-white
-                        shadow-lg
+                        shadow-xl
                         rounded-xl
                       "
                         key={index}
