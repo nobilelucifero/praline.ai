@@ -38,7 +38,7 @@ export default function Home() {
         <title>Praline.ai</title>
         <meta
           name="description"
-          content="Put your content strategy on autopilot with AI"
+          content="The AI-powered workspace for content marketing"
         />
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -52,17 +52,18 @@ export default function Home() {
           <div className="lr:pr-8 lg:basis-2/5">
             <h1
               className="
-          text-3xl
-          font-bold
-          mb-2
-          lg:w-5/6
-          "
+                text-3xl
+                font-bold
+                mb-2
+                lg:w-11/12
+              "
             >
-              Put your content strategy on autopilot with AI
+              The AI-powered workspace for content marketing
             </h1>
 
-            <p className="mb-8 text-lg lg:w-3/4">
-              Research and create relevant content for your audience 10x faster.
+            <p className="mb-8 text-lg">
+              Scale your content creation, be on top of your insights and grow
+              your business.
             </p>
 
             <a
