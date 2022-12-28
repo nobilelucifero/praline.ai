@@ -238,29 +238,31 @@ export default function Teaser({ children, hidden, output }) {
     return (
       <div
         className="
-        0pb-16
+        grid lg:grid-rows-2 lg:grid-flow-col gap-8
       "
       >
         <div
           className="
-          p-4
-          bg-orange-200
-          rounded-xl
+          row-span-2
+          p-6
+          bg-gray-200
+          rounded-2xl
+          0shadow-md
         "
         >
           <textarea
             name="text"
             id="generated-text"
             className="
-          w-full
-          min-h-[16rem]
-          py-2
-            px-4
-            rounded
-            bg-white
-            border-0
-            border-orange-300
-        "
+              w-full
+              min-h-[16rem]
+              py-2 px-4
+              rounded
+              bg-white
+              border
+              border-gray-400
+              shadow-inner
+            "
             readOnly
             value={output}
             onClick={(e) => {
@@ -268,21 +270,21 @@ export default function Teaser({ children, hidden, output }) {
             }}
           />
           <div className="mt-2">
-            {/* <Button>Post on Twitter</Button> */}
-            {/* <Button>Post on Linkedin</Button> */}
             <button
-              className="inline-block
-      whitespace-nowrap
-    text-white
-    font-bold
-    tracking-wide
-    rounded-lg
-    px-4 py-3 mr-2
-    bg-gray-900
-    hover:bg-gray-800
-    focus:outline-none
-    focus:ring-4
-    focus:ring-blue-300"
+              className="
+                inline-block
+                whitespace-nowrap
+                text-white
+                font-bold
+                tracking-wide
+                rounded-lg
+                px-4 py-3 mr-2
+                bg-gray-900
+                hover:bg-gray-800
+                focus:outline-none
+                focus:ring-4
+                focus:ring-blue-300
+              "
               onClick={() => {
                 navigator.clipboard.writeText(output);
                 // document.execCommand("copy", true, textToCopy);
@@ -301,19 +303,18 @@ export default function Teaser({ children, hidden, output }) {
 
         <div
           className="
-                  mt-6
-                  pt-3
-                  pb-4
-                  p-4
-                  bg-orange-200
-                  rounded-lg
-                "
+            col-span-1
+            p-6
+            bg-gray-200
+            rounded-xl
+            0shadow-md
+          "
         >
           <h4
             className="
-                    font-bold
-                    text-lg
-                  "
+              font-bold
+              text-lg
+            "
           >
             Interested in learning more?
           </h4>
@@ -331,15 +332,15 @@ export default function Teaser({ children, hidden, output }) {
               target="_blank"
               rel="noopener noreferrer"
               className="
-                      inline-block
-                      mt-4
-                      bg-gray-900
-    tracking-wide
-    text-white
-    px-4 py-3
-                      font-bold
-                      rounded-lg
-                    "
+                inline-block
+                mt-4
+                bg-gray-900
+                tracking-wide
+                text-white
+                px-4 py-3
+                font-bold
+                rounded-lg
+              "
             >
               Join the waitlist
             </a>
@@ -348,19 +349,18 @@ export default function Teaser({ children, hidden, output }) {
 
         <div
           className="
-                  mt-6
-                  pt-3
-                  pb-4
-                  p-4
-                  bg-orange-200
-                  rounded-lg
-                "
+            row-span-1 col-span-1
+            p-6
+            bg-gray-200
+            rounded-xl
+            0shadow-md
+          "
         >
           <h4
             className="
-                    font-bold
-                    text-lg
-                  "
+              font-bold
+              text-lg
+            "
           >
             Want to have another go?
           </h4>
@@ -412,7 +412,7 @@ export default function Teaser({ children, hidden, output }) {
                 bottom-0
                 w-full
                 h-24
-                bg-gradient-to-t from-orange-300
+                bg-gradient-to-t from-gray-100
               "
           ></div>
         ) : (

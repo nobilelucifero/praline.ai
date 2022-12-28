@@ -84,9 +84,9 @@ export default function Modal({ isOpen, onClose, children, title }) {
     <div
       className="
         flex
-        lg:items-center
+        0lg:items-center
         justify-center
-        p-12
+        0p-12
         fixed
         left-0
         top-0
@@ -101,51 +101,52 @@ export default function Modal({ isOpen, onClose, children, title }) {
       <div
         className="
         relative
-        0bg-white
-        bg-orange-300
+        bg-gray-100
         w-full
-        0w-[36rem]
-        0max-w-[1280px]
-        max-h-[calc(100vh_-_96px)]
+        min-h-screen
         py-6
-        px-6
+        lg:px-6
         rounded-xl
         overflow-y-scroll
         opacity-0
-        animate-[fadeIn_0.25s_ease-out_forwards]
+        animate-[fadeIn_0.5s_ease-out_forwards]
         flex
         flex-col
-        0items-center
-        0justify-center
       "
         onClick={(e) => e.stopPropagation()}
       >
         <Page contentOnly={true}>
-          <div className="flex flex-col-reverse lg:flex-row items-center">
-            <div className="lr:pr-8 lg:basis-2/5">
+          <div className="flex flex-col-reverse lg:flex-row items-center mb-12">
+            <div className="lg:mt-12 lg:pr-0 lg:basis-3/5">
               <h1
                 className="
-          text-3xl
-          font-bold
-          mb-6
-          lg:w-5/6
-          "
+                  text-3xl
+                  text-center
+                  lg:text-left
+                  lg:text-6xl
+                  font-bold
+                "
               >
                 {title ? <>{title}</> : null}
               </h1>
-              <div>{children}</div>
             </div>
 
-            <div className="lg:pl-8 flex items-center justify-center lg:basis-3/5 mb-12 lg:mb-0">
-              <Image
-                width={480}
-                height={480}
-                src={"/prediction-ready.png"}
-                alt=" "
-                priority="true"
-              />
+            <div className="lg:pl-8 flex items-center justify-end lg:basis-2/5 mb-12 lg:mb-0">
+              <div
+                className="
+              "
+              >
+                <Image
+                  width={240}
+                  height={240}
+                  src={"/prediction-ready.png"}
+                  alt=" "
+                  priority="true"
+                />
+              </div>
             </div>
           </div>
+          <div>{children}</div>
         </Page>
         <CloseButton onClick={() => (window.location = "./predict2023")}>
           Close
