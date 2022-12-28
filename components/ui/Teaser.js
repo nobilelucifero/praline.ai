@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 
+import { setCookie, hasCookie } from "cookies-next";
+
 // import ModalToolbar from "../ui/ModalToolbar";
 
 import IconTwitter from "../icons/IconTwitter";
@@ -28,6 +30,7 @@ export function TeaserContent({ childToParent }) {
   const inputEl = useRef(null);
   // 2. Hold a message in state to handle the response from our API.
   const [message, setMessage] = useState("");
+  // const [hasEmail, setHasEmail] = useState(false);
 
   const subscribe = async (e) => {
     e.preventDefault();
@@ -53,8 +56,13 @@ export function TeaserContent({ childToParent }) {
 
     if (error) {
       // 4. If there was an error, update the message in state.
+
+      // 4b. If there was already an email, but uncaught, setCookie.
+      if (res.status == 400) {
+        setCookie("hasEmail", "true", { maxAge: 60 * 60 * 24 * 365 });
+      }
+
       setMessage(error);
-      // setMessage("Your email is already registered, or maybe try again later.");
 
       return;
     }
@@ -63,9 +71,11 @@ export function TeaserContent({ childToParent }) {
     inputEl.current.value = "";
     setMessage("Success! 🎉 You will hear from us soon.");
 
+    setCookie("hasEmail", "true", { maxAge: 60 * 60 * 24 * 365 });
+
     setTimeout(() => {
       childToParent();
-    }, 1000);
+    }, 500);
   };
 
   return (

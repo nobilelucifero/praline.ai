@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { setCookie, hasCookie } from "cookies-next";
 
 import { formContent as content } from "../data/schema";
 
@@ -20,6 +21,15 @@ export default function Predict2023() {
 
   const [response, setResponse] = useState("");
   const [open, setOpen] = useState(false);
+  const [teaserHidden, setTeaserHidden] = useState(true);
+
+  useEffect(() => {
+    // setConsent(hasCookie("hasEmail"));
+    if (hasCookie("hasEmail")) {
+      setTeaserHidden(false);
+      // setCookie("hasEmail", "false", { maxAge: 60 * 60 * 24 * 365 });
+    }
+  }, []);
 
   // const handleChange = async (event) => {
   //   setData({ ...data, [event.target.name]: event.target.value });
@@ -157,7 +167,7 @@ export default function Predict2023() {
             isOpen={open}
             onClose={() => setOpen(false)}
           >
-            <Teaser hidden={true} output={response}>
+            <Teaser hidden={teaserHidden} output={response}>
               <div
                 className="
                 flex flex-col
