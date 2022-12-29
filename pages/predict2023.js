@@ -95,8 +95,8 @@ export default function Predict2023() {
   return (
     <div>
       <Head>
-        <title>Praline.ai | Predict 2023 with marmeldate.ai</title>
-        <meta name="description" content="Get predictin'!" />
+        <title>Praline.ai | Predict 2023 with praline.ai</title>
+        <meta name="description" content="Predict 2023 with AI" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
