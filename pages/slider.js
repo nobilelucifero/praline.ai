@@ -11,7 +11,19 @@
 // import P from "../components/website/P";
 // import { render } from "react-dom";
 
-// export default function PrivacyPolicy() {
+export default function Slider() {
+  return (
+    <div className="relative 0h-screen bg-gray-100">
+      <Head>
+        <title>Slider - Praline.ai</title>
+        <meta name="description" content="Praline.ai Slider" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <div className="absolute top-0 left-0"></div>
+    </div>
+  );
+}
 //   const [slideIndex, setSlideIndex] = useState(0);
 //   const [slideIndexStart, setSlideIndexStart] = useState(true);
 //   const [slideIndexEnd, setSlideIndexEnd] = useState(false);
