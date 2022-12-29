@@ -57,7 +57,8 @@ export default function Predict2023() {
     const resultCleaned = result.replace(/\n\n/g, "\n");
     const resultFormatted = resultCleaned.replace(/\n/g, "\n\n");
     const resultWithWatermark = resultFormatted.concat(
-      "\n\nMade with praline.ai"
+      "\n\nTrend predictions 2023 by praline.ai"
+      // "\n\nMade with praline.ai"
     );
 
     setResponse(resultWithWatermark);
