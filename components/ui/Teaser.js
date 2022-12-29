@@ -379,7 +379,7 @@ export default function Teaser({ children, hidden, output }) {
             <a
               onClick={(e) => {
                 e.preventDefault();
-                location.reload();
+                window.location = "/predict2023";
               }}
               href="#"
               rel="noopener noreferrer"
