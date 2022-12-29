@@ -66,6 +66,7 @@ function CloseButton(props) {
 }
 
 export default function Modal({ isOpen, onClose, children, title }) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   // const inheritedTitle = title;
   useEffect(() => {
     if (isOpen) {
