@@ -61,10 +61,10 @@ export default function Home() {
               The AI-powered workspace for content marketing
             </h1>
 
-            <p className="mb-8 text-lg lg:w-10/12">
+            <p className="mb-8 text-lg xl:w-10/12">
               {/* Boost your content creation by 10x and grow your business. */}
-              Boost your content creation, be on top of your insights and grow
-              your business.
+              Boost your content creation by 10x, be on top of your insights and
+              grow your business.
               {/* Your AI companion to create content for your audience 10x faster
               and grow your business. */}
               {/* Create relevant content for your audience 10x faster and grow your */}

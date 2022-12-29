@@ -128,7 +128,7 @@ export function BtnSlider({ direction, moveSlide }) {
 export function Slide({ children, className }) {
   return (
     <Wrapper
-      className={`w-full h-screen bg-gray-200 flex justify-center items-center align-items-center animate-slide-move-in bg-pink-300 ${className}`}
+      className={`w-full h-screen bg-gray-200 flex justify-center items-center align-items-center animate-slide-move-in ${className}`}
     >
       {children}
     </Wrapper>
