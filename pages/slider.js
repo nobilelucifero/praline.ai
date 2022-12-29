@@ -1,6 +1,6 @@
 // import { useCallback, useState, useEffect, useRef, createRef } from "react";
 
-// import Head from "next/head";
+import Head from "next/head";
 
 // import Page from "../layouts/page";
 
