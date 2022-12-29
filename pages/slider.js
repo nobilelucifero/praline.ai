@@ -94,7 +94,7 @@ export default function PrivacyPolicy() {
           console.log("slide", slide);
           return (
             <Slide
-              key={slideDataIndex}
+              key={`slide-${slideDataIndex}`}
               slideDataIndex={slideDataIndex}
               setSlideIndex={setSlideIndex}
               className={`${

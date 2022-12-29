@@ -6,6 +6,9 @@
   html {
     font-family: "Chivo", system-ui, sans-serif;
   }
+  :root {
+    color-scheme: light;
+  }
 }
 
 /* html,
