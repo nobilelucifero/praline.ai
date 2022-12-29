@@ -33,7 +33,7 @@ export default function CookieConsent() {
     <div
       className={`
         fixed bottom-6 0w-[calc(100%_-_48px)]
-        right-6 pt-5 pb-2 px-6
+        left-6 lg:left-unset right-6 pt-5 pb-2 px-6
         rounded-lg
         md:max-w-xs
         bg-white ${consent ? "hidden" : ""}
