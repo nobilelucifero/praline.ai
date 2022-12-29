@@ -20,6 +20,6 @@ export default async function handler(req, res) {
   } else if (req.method === "POST") {
     // res.status(200).json(req.body.industry);
     res.status(200).json(fileContents);
-    console.log("look at me~!", jsonDirectory);
+    // console.log("look at me~!", jsonDirectory);
   }
 }

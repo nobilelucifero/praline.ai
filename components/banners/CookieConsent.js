@@ -15,16 +15,16 @@ export default function CookieConsent() {
       ad_storage: "granted",
       analytics_storage: "granted",
     });
-    console.log("accepting cookies");
+    // console.log("accepting cookies");
   };
   const closeP = () => {
     setConsent(true);
-    console.log("closing");
+    // console.log("closing");
   };
   const denyCookie = () => {
     setConsent(true);
     setCookie("localConsent", "false", { maxAge: 60 * 60 * 24 * 365 });
-    console.log("denying cookie");
+    // console.log("denying cookie");
   };
   if (consent === true) {
     return null;

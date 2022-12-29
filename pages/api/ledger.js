@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     res.status(200).json({ name: "John Doe" });
   } else if (req.method === "POST") {
     // const jsonData = await getData();
-    console.log(data);
+    // console.log(data);
     res.status(200).json(req.body[0]);
     // res.status(200).json(req.body[0]);
     // res.status(200).json(jsonData);
