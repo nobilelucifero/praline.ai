@@ -57,9 +57,8 @@ export default function Home() {
 
     setTimeout(() => {
       window.open(`https://tally.so/r/wvXL5d?email=${inputEl.current.value}`);
+      inputEl.current.value = "";
     }, 500);
-
-    // inputEl.current.value = "";
   };
 
   return (
