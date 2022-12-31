@@ -108,7 +108,7 @@ export default function Modal({ isOpen, onClose, children, title }) {
         min-h-screen
         py-6
         lg:px-6
-        rounded-xl
+        0rounded-xl
         overflow-y-scroll
         opacity-0
         animate-[fadeIn_0.5s_ease-out_forwards]

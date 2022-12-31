@@ -328,7 +328,7 @@ export default function Teaser({ children, hidden, output }) {
           >
             Interested in learning more?
           </h4>
-          <p>We are putting content strategy on autopilot.</p>
+          <p>We are creating the AI-powered workspace for content marketing.</p>
           <p>
             <a
               onClick={(e) => {
@@ -374,7 +374,9 @@ export default function Teaser({ children, hidden, output }) {
           >
             Want to have another go?
           </h4>
-          <p>Simply hit the button below or close this window.</p>
+          <p>
+            Simply hit the button below, refresh the page, or close this window.
+          </p>
           <p>
             <a
               onClick={(e) => {
