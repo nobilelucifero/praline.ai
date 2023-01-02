@@ -70,9 +70,13 @@ export default function Modal({ isOpen, onClose, children, title }) {
   useEffect(() => {
     if (isOpen) {
       document.body.className = "overflow-hidden";
+      console.log("title", title);
       // Pageview
       gtag("event", "page_view", {
         page_title: title,
+      });
+      gtag("event", "modal_open", {
+        screen_name: "Survey",
       });
     }
     if (!isOpen) document.body.className = "";

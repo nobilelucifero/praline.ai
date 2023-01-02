@@ -336,6 +336,9 @@ export default function Teaser({ children, hidden, output }) {
                 gtag("event", "page_view", {
                   page_title: "survey_view-index",
                 });
+                gtag("event", "survey_view_index", {
+                  screen_name: "Home",
+                });
                 window.open("https://tally.so/r/wvXL5d");
               }}
               href="https://tally.so/r/wvXL5d"
