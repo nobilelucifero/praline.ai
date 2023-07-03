@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { setCookie, hasCookie } from "cookies-next";
 
@@ -14,6 +14,12 @@ export default function Home() {
   // 2. Hold a message in state to handle the response from our API.
   const [message, setMessage] = useState("");
   // const [hasEmail, setHasEmail] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // window.location.replace("http://contentradar.ai");
+    }, 2000);
+  }, []);
 
   const subscribe = async (e) => {
     e.preventDefault();
@@ -65,10 +71,7 @@ export default function Home() {
     <div className="bg-gray-100">
       <Head>
         <title>Praline.ai</title>
-        <meta
-          name="description"
-          content="The AI-powered workspace for content marketing"
-        />
+        <meta name="description" content="Praline.ai is now ContentRadar" />
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"
@@ -77,22 +80,29 @@ export default function Home() {
       </Head>
 
       <Page showPromoMessage={true}>
-        <div className="flex flex-col-reverse lg:flex-row items-center">
-          <div className="lr:pr-8 lg:basis-2/5">
+        <div className="flex flex-col-reverse items-center">
+          <div className="">
             <h1
               className="
                 text-3xl
                 font-bold
                 mb-2
-                lg:w-11/12
               "
             >
-              The AI-powered workspace for content marketing
+              Praline.ai is now ContentRadar
             </h1>
 
             <p className="mb-8 text-lg xl:w-10/12">
-              Boost your content creation by 10x, be on top of your insights and
-              grow your business.
+              Same mission, new brand. Visit us on{" "}
+              <a
+                className="hover:underline cursor-pointer"
+                href="//contentradar.ai"
+              >
+                contentradar.ai
+              </a>
+            </p>
+            <p className="mb-8 text-lg text-gray-600">
+              Redirecting you there&hellip;
             </p>
 
             {/* <a
@@ -122,44 +132,6 @@ export default function Home() {
             >
               Get early access
             </a> */}
-            <form className="flex flex-col gap-2" onSubmit={subscribe}>
-              <p>
-                <strong>Want to learn more?</strong>
-                <small className="block">
-                  Be one of the first to hear about us.
-                </small>
-              </p>
-              <label className="hidden font-bold mb-2" htmlFor="email-input">
-                Your email address
-              </label>
-              <div className="flex flex-col lg:flex-row gap-2">
-                <input
-                  className="
-                  py-2 px-4
-                  border border-gray-300
-                  bg-white
-                  rounded-lg
-                "
-                  id="email-input"
-                  name="email"
-                  type="email"
-                  ref={inputEl}
-                  required
-                  placeholder="email@provider.com"
-                />
-                <Button type="submit">Get early access</Button>
-              </div>
-              <p className="mt-2 text-sm">{message ? message : null}</p>
-            </form>
-          </div>
-          <div className="lg:pl-8 lg:basis-3/5 mb-12 lg:mb-0">
-            <Image
-              width={592}
-              height={592}
-              src={"/hero-transparent.png"}
-              alt=" "
-              priority="true"
-            />
           </div>
         </div>
       </Page>

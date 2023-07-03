@@ -21,11 +21,10 @@ export default function Page({
         !contentOnly && "min-h-screen"
       } grid grid-rows-[auto_1fr_auto] ${className}`}
     >
-      {!contentOnly && <Navbar message={showPromoMessage} />}
+      {!contentOnly && <Navbar />}
       <main className="flex min-w-full items-center mx-auto">
         <Section>{children}</Section>
       </main>
-      {!contentOnly && <Footer hidden={contentOnly} />}
       {!contentOnly && <CookieConsent hidden={contentOnly} />}
     </div>
   );
