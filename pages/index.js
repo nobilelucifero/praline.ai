@@ -17,7 +17,7 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      // window.location.replace("http://contentradar.ai");
+      window.location.replace("http://contentradar.ai");
     }, 2000);
   }, []);
 
